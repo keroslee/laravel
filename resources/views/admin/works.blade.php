@@ -1,12 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ATAH-后台编辑</title>
-<link href="/images/atah_logo.ico" rel="shortcut icon">
-<link rel="stylesheet" href="/css/style-admin.css">
-<script src="/js/jquery-2.1.1.min.js" type="text/javascript"></script>
+@extends('layouts.admin')
+
+@section('content')
 <script type="text/javascript">
 //list、图片等计算的尺寸
 window.onload = function(){
@@ -39,7 +33,7 @@ window.onresize = function(){
 //
   $(function(){
 	  $('#addtoli').click(function(){
-		  $('.sortable').append("<li><div class=\'mar_ls\'><div class=\'bor_white\'><div class=\'p_img\'><img src=\'/images/notpic.gif\' /></div></div><div class=\'inpull\'><div class=\'ktext\'><em title=\'建筑项目名称\'>建筑项目名称</em><p title=\'建成时间\'>--/--/--</p></div><div><a href=\'works_edit.html\'><button type=\'button\'>编辑</button></a><button type=\'button\' class=\'delt\'>删除</button><div class=\'classify\' title=\'建筑分类\'>建筑分类</div></div><div class=\'clearfix\'></div></div></div></li>");
+		  $('.sortable').append("<li><div class=\'mar_ls\'><div class=\'bor_white\'><div class=\'p_img\'><img src=\'/images/notpic.gif\' /></div></div><div class=\'inpull\'><div class=\'ktext\'><em title=\'建筑项目名称\'>建筑项目名称</em><p title=\'建成时间\'>--/--/--</p></div><div><a href=\'works_edit\'><button type=\'button\'>编辑</button></a><button type=\'button\' class=\'delt\'>删除</button><div class=\'classify\' title=\'建筑分类\'>建筑分类</div></div><div class=\'clearfix\'></div></div></div></li>");
   		$('.pic_list li .p_img').css('width',((((document.documentElement.clientWidth)-178) *0.25) *0.94) -12 +"px");
 		$('.pic_list li .p_img').css('height',(((((document.documentElement.clientWidth)-178) *0.25) *0.94) -12) *0.6718 +"px");
 
@@ -98,7 +92,7 @@ window.onresize = function(){
               <p title="09/05/12">09/05/12</p>
             </div>
             <div>
-            <a href="works_edit.html"><button type="button">编辑</button></a>
+            <a href="works_edit"><button type="button">编辑</button></a>
             <button type="button" class="delt">删除</button>
             <div class="classify" title="建筑分类">场所 & 室内</div>
             </div>
@@ -117,7 +111,7 @@ window.onresize = function(){
               <p title="建成时间">--/--/--</p>
             </div>
             <div>
-            <a href="works_edit.html"><button type="button">编辑</button></a>
+            <a href="works_edit"><button type="button">编辑</button></a>
             <button type="button" class="delt">删除</button>
             <div class="classify" title="建筑分类">建筑分类</div>
             </div>
@@ -129,6 +123,4 @@ window.onresize = function(){
   </div>
     <div class=""><button  id="addtoli" type="button">添加</button></div>
 </div>
-
-</body>
-</html>
+@endsection

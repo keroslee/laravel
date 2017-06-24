@@ -1,16 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> ATAH</title>
-<link href="images/atah_logo.ico" rel="shortcut icon">
-<link rel="stylesheet" href="css/style.css">
-<script src="js/jquery-2.1.1.min.js" type="text/javascript"></script>
-<!--[if lt IE 9]>
-  <script src="../js/html5shiv.min.js"></script>
-<![endif]-->
-<script src="js/sidebar.js" type="text/javascript"></script>
+@extends('layouts.atah')
+
+@section('content')
 <script type="text/javascript">
 //首屏默认先隐藏;最后一屏幕向下箭头删除
 $(document).ready(function(){
@@ -38,7 +28,7 @@ $(document).ready(function(){
       <div class="tx_lt to_one">
         <div class="pos_rel ts1a ts_r" rel="750,0,0,0">
           <div class="pt_title pt_Rb2">
-            <em><a href="wk_details.html">中纺艺展中心</a></em>
+            <em><a href="wk_details">中纺艺展中心</a></em>
           </div>
           <div class="pt_title_bor pt_Rb2"></div>
         </div>
@@ -55,7 +45,7 @@ $(document).ready(function(){
       <div class="tx_rt to_one">
         <div class="pos_rel ts2a ts_l" rel="-750,0,0,0">
           <div class="pt_title pt_Lb1">
-            <em><a href="wk_details.html">中纺国际时尚中心</a></em>
+            <em><a href="wk_details">中纺国际时尚中心</a></em>
           </div>
           <div class="pt_title_bor pt_Lb1"></div>
         </div>
@@ -75,7 +65,7 @@ $(document).ready(function(){
       <div class="tx_lt to_one">
         <div class="pos_rel ts3a ts_r" rel="750,0,0,0">
           <div class="pt_title pt_Rb2">
-            <em><a href="wk_details.html">旱雪滑雪中心</a></em>
+            <em><a href="wk_details">旱雪滑雪中心</a></em>
           </div>
           <div class="pt_title_bor pt_Rb2"></div>
         </div>
@@ -92,7 +82,7 @@ $(document).ready(function(){
       <div class="tx_rt to_one">
         <div class="pos_rel ts4a ts_l" rel="-750,0,0,0">
           <div class="pt_title pt_Lb1">
-            <em><a href="wk_details.html">金领谷园区办公</a></em>
+            <em><a href="wk_details">金领谷园区办公</a></em>
           </div>
           <div class="pt_title_bor pt_Lb1"></div>
         </div>
@@ -109,7 +99,7 @@ $(document).ready(function(){
       <div class="tx_lt to_one">
         <div class="pos_rel ts5a ts_r" rel="750,0,0,0">
           <div class="pt_title pt_Rb2">
-            <em><a href="wk_details.html">老城文化艺术中心</a></em>
+            <em><a href="wk_details">老城文化艺术中心</a></em>
           </div>
           <div class="pt_title_bor pt_Rb2"></div>
         </div>
@@ -126,7 +116,7 @@ $(document).ready(function(){
       <div class="tx_rt to_one">
         <div class="pos_rel ts6a ts_l" rel="-750,0,0,0">
           <div class="pt_title pt_Lb1">
-            <em><a href="wk_details.html">莲花社区商业改造</a></em>
+            <em><a href="wk_details">莲花社区商业改造</a></em>
           </div>
           <div class="pt_title_bor pt_Lb1"></div>
         </div>
@@ -143,7 +133,7 @@ $(document).ready(function(){
       <div class="tx_lt to_one">
         <div class="pos_rel ts7a ts_r" rel="750,0,0,0">
           <div class="pt_title pt_Rb2">
-            <em><a href="wk_details.html">中纺艺展中心</a></em>
+            <em><a href="wk_details">中纺艺展中心</a></em>
           </div>
           <div class="pt_title_bor pt_Rb2"></div>
         </div>
@@ -160,7 +150,7 @@ $(document).ready(function(){
       <div class="tx_rt to_one">
         <div class="pos_rel ts8a ts_l" rel="-750,0,0,0">
           <div class="pt_title pt_Lb1">
-            <em><a href="wk_details.html">中纺国际时尚中心</a></em>
+            <em><a href="wk_details">中纺国际时尚中心</a></em>
           </div>
           <div class="pt_title_bor pt_Lb1"></div>
         </div>
@@ -177,7 +167,7 @@ $(document).ready(function(){
       <div class="tx_lt to_one">
         <div class="pos_rel ts9a ts_r" rel="750,0,0,0">
           <div class="pt_title pt_Rb2">
-            <em><a href="wk_details.html">旱雪滑雪中心</a></em>
+            <em><a href="wk_details">旱雪滑雪中心</a></em>
           </div>
           <div class="pt_title_bor pt_Rb2"></div>
         </div>
@@ -194,7 +184,7 @@ $(document).ready(function(){
       <div class="tx_rt to_one">
         <div class="pos_rel ts10a ts_l" rel="-750,0,0,0">
           <div class="pt_title pt_Lb1">
-            <em><a href="wk_details.html">金领谷园区办公</a></em>
+            <em><a href="wk_details">金领谷园区办公</a></em>
           </div>
           <div class="pt_title_bor pt_Lb1"></div>
         </div>
@@ -211,7 +201,7 @@ $(document).ready(function(){
       <div class="tx_lt to_one">
         <div class="pos_rel ts11a ts_r" rel="750,0,0,0">
           <div class="pt_title pt_Rb2">
-            <em><a href="wk_details.html">老城文化艺术中心</a></em>
+            <em><a href="wk_details">老城文化艺术中心</a></em>
           </div>
           <div class="pt_title_bor pt_Rb2"></div>
         </div>
@@ -228,7 +218,7 @@ $(document).ready(function(){
       <div class="tx_rt to_one">
         <div class="pos_rel ts12a ts_l" rel="-750,0,0,0">
           <div class="pt_title pt_Lb1">
-            <em><a href="wk_details.html">莲花社区商业改造</a></em>
+            <em><a href="wk_details">莲花社区商业改造</a></em>
           </div>
           <div class="pt_title_bor pt_Lb1"></div>
         </div>
@@ -294,5 +284,4 @@ window.onresize = function(){
 		}); 
 	}); 
 </script>
-</body>
-</html>
+@endsection
