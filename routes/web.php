@@ -11,32 +11,34 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::group(['middleware' => 'locale'], function () {
+	Route::get('/', function () {
+		return view('index');
+	});
 
-Route::get('/profile', function () {
-    return view('profile');
-});
+	Route::get('/profile', function () {
+		return view('profile');
+	});
 
-Route::get('/works', function () {
-    return view('works');
-});
+	Route::get('/works', function () {
+		return view('works');
+	});
 
-Route::get('/wk_details', function () {
-    return view('wk_details');
-});
+	Route::get('/wk_details', function () {
+		return view('wk_details');
+	});
 
-Route::get('/media', function () {
-    return view('media');
-});
+	Route::get('/media', function () {
+		return view('media');
+	});
 
-Route::get('/events', function () {
-    return view('events');
-});
+	Route::get('/events', function () {
+		return view('events');
+	});
 
-Route::get('/jobs', function () {
-    return view('jobs');
+	Route::get('/jobs', function () {
+		return view('jobs');
+	});
 });
 
 Route::group(['prefix' => 'admin', 'middleware'=>'auth'], function(){
@@ -80,3 +82,5 @@ Route::group(['prefix' => 'admin', 'middleware'=>'auth'], function(){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('/setLang/{lang}', 'SetlocaleController@index');

@@ -5,19 +5,20 @@
       <!--iconlogo-->
       <!--<div class="ic_logo"></div>-->
     </div>
-    <!--±êÌõ±³¾°-->
+    <!--æ ‡æ¡èƒŒæ™¯-->
     <!--<div class="ic_bg"></div>-->
-    <div class="ic_encn"><a href="../atah_html-cn/index.html">CN</a></div>
+	<?php $lan=['en'=>'cn','cn'=>'en'];?>
+    <div class="ic_encn"><a href="{{url('/setLang',$lan[Cookie::get('locale')])}}">{{trans('menu.toggle')}}</a></div>
   </div>
   <div class="m_van">
     <div class="m_list">
       <ul>
-        <li><a href="/" class="{{$home}}">HOME</a></li>
-        <li><a href="profile" class="{{$profile}}">PROFILE</a></li>
-        <li><a href="works" class="{{$works}}">WORKS</a></li>
-        <li><a href="media" class="{{$media}}">MEDIA</a></li>
-        <li><a href="events" class="{{$events}}">EVENTS</a></li>
-        <li><a href="jobs" class="{{$jobs}}">JOBS</a></li>
+        <li><a href="/" class="{{$home}}">{{trans('menu.home')}}</a></li>
+        <li><a href="profile" class="{{$profile}}">{{trans('menu.profile')}}</a></li>
+        <li><a href="works" class="{{$works}}">{{trans('menu.works')}}</a></li>
+        <li><a href="media" class="{{$media}}">{{trans('menu.media')}}</a></li>
+        <li><a href="events" class="{{$events}}">{{trans('menu.events')}}</a></li>
+        <li><a href="jobs" class="{{$jobs}}">{{trans('menu.jobs')}}</a></li>
       </ul>
     </div>
     <div class="m_Logo">ATAH</div>
