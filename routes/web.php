@@ -12,6 +12,7 @@
 */
 
 Route::group(['middleware' => 'locale'], function () {
+	Auth::routes();
 	Route::get('/', function () {
 		return view('index');
 	});
@@ -78,8 +79,6 @@ Route::group(['prefix' => 'admin', 'middleware'=>'auth'], function(){
 		return view('admin.jobs');
 	});
 });
-
-Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 

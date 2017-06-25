@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed' => '�˺Ų����ڡ�',
-    'throttle' => '��¼����Ƶ���� ��ȴ� :seconds ����ٵ�¼',
+    'failed' => '密码错误或者账号不存在。',
+    'throttle' => '登录过于频繁，请等待 :seconds 秒后再登录。',
 
 ];

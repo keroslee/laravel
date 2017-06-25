@@ -21,7 +21,7 @@ input{ border:1px solid #aeaeae; margin:12px 0; padding:9px; border-radius:2px;}
 button{ border:0; margin:12px 0; padding:9px 26px; background:#70a24b; color:#eee; text-align:center; font-size:16px; cursor:pointer;}
 button:active { background:#62953c;}
 /*------------Login-----------------*/
-.Login{ width:364px; height:330px; overflow:hidden; position:absolute; left:50%; top:50%; margin-left:-182px; margin-top:-240px;}
+.Login{ width:364px; /*height:330px;*/ overflow:hidden; position:absolute; left:50%; top:50%; margin-left:-182px; margin-top:-240px;}
 .Login .logo { margin:0 auto 30px auto;}
 .Login .logo,.Login .logo img{ width:94px; height:120px;}
 .Login input{ width:344px; text-align:center;} 
