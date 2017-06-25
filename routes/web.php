@@ -32,14 +32,14 @@ Route::group(['middleware' => 'locale'], function () {
 	Route::get('/jobs', 'JobController@show');
 });
 
-Route::group(['prefix' => 'admin', 'middleware'=>'auth'], function(){
+Route::group(['prefix' => 'admin', 'middleware'=>['auth','locale']], function(){
 	Route::get('/', function () {
 		return redirect('/admin/home');
 	});
 
 	Route::get('/home', 'HomeController@index');
-
-	Route::get('/home_edit', 'HomeController@edit');
+	Route::get('/home_edit/{id}', 'HomeController@edit');
+	Route::post('/home_edit/store', 'HomeController@store');
 
 	Route::get('/profile', 'ProfileController@index');
 

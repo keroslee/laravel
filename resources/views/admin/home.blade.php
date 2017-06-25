@@ -28,222 +28,26 @@ window.onresize = function(){
   </div>
   <div class="pic_list clearfix">
     <ul class="sortable">
+	@foreach($homes as $home)
       <li>
         <div class="mar_ls">
           <div class="bor_white">
-            <div class="p_img"><img src="../storage/home_img/index_bg2.jpg"/></div>
+            <div class="p_img"><img src="{{$home->path}}"/></div>
           </div>
           <div class="inpull">
             <div class="ktext">
-              <em title="中纺国际时尚中心">中纺国际时尚中心</em>
-              <i title="艺术介入商业的体验聚场">艺术介入商业的体验聚场</i>
+              <em title="{{$home->name_cn}}">{{$home->name_cn}}</em>
+              <i title="{{$home->desc_cn}}">{{$home->desc_cn}}</i>
             </div>
             <div>
-            <a href="home_edit"><button type="button">编辑</button></a>
-            <div class="classify" title="浙江 · 绍兴">浙江 · 绍兴</div>
+            <a href="home_edit/{{$home->id}}"><button type="button">编辑</button></a>
+            <div class="classify" title="{{$home->addr_cn}}">{{$home->addr_cn}}</div>
             </div>
             <div class="clearfix"></div>
           </div>
         </div>
       </li>
-      <li>
-        <div class="mar_ls">
-          <div class="bor_white">
-            <div class="p_img"><img src="/images/notpic.gif" /></div>
-          </div>
-          <div class="inpull">
-            <div class="ktext">
-              <em title="标题名称文字-大字">标题名称文字-大字</em>
-              <i title="简短的文字内容说明">简短的文字内容说明</i>
-            </div>
-            <div>
-            <a href="home_edit"><button type="button">编辑</button></a>
-            <div class="classify" title="省份 · 城市">省份 · 城市</div>
-            </div>
-            <div class="clearfix"></div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="mar_ls">
-          <div class="bor_white">
-            <div class="p_img"><img src="/images/notpic.gif" /></div>
-          </div>
-          <div class="inpull">
-            <div class="ktext">
-              <em title="标题名称文字-大字">标题名称文字-大字</em>
-              <i title="简短的文字内容说明">简短的文字内容说明</i>
-            </div>
-            <div>
-            <a href="home_edit"><button type="button">编辑</button></a>
-            <div class="classify" title="省份 · 城市">省份 · 城市</div>
-            </div>
-            <div class="clearfix"></div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="mar_ls">
-          <div class="bor_white">
-            <div class="p_img"><img src="/images/notpic.gif" /></div>
-          </div>
-          <div class="inpull">
-            <div class="ktext">
-              <em title="标题名称文字-大字">标题名称文字-大字</em>
-              <i title="简短的文字内容说明">简短的文字内容说明</i>
-            </div>
-            <div>
-            <a href="home_edit"><button type="button">编辑</button></a>
-            <div class="classify" title="省份 · 城市">省份 · 城市</div>
-            </div>
-            <div class="clearfix"></div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="mar_ls">
-          <div class="bor_white">
-            <div class="p_img"><img src="/images/notpic.gif" /></div>
-          </div>
-          <div class="inpull">
-            <div class="ktext">
-              <em title="标题名称文字-大字">标题名称文字-大字</em>
-              <i title="简短的文字内容说明">简短的文字内容说明</i>
-            </div>
-            <div>
-            <a href="home_edit"><button type="button">编辑</button></a>
-            <div class="classify" title="省份 · 城市">省份 · 城市</div>
-            </div>
-            <div class="clearfix"></div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="mar_ls">
-          <div class="bor_white">
-            <div class="p_img"><img src="/images/notpic.gif" /></div>
-          </div>
-          <div class="inpull">
-            <div class="ktext">
-              <em title="标题名称文字-大字">标题名称文字-大字</em>
-              <i title="简短的文字内容说明">简短的文字内容说明</i>
-            </div>
-            <div>
-            <a href="home_edit"><button type="button">编辑</button></a>
-            <div class="classify" title="省份 · 城市">省份 · 城市</div>
-            </div>
-            <div class="clearfix"></div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="mar_ls">
-          <div class="bor_white">
-            <div class="p_img"><img src="/images/notpic.gif" /></div>
-          </div>
-          <div class="inpull">
-            <div class="ktext">
-              <em title="标题名称文字-大字">标题名称文字-大字</em>
-              <i title="简短的文字内容说明">简短的文字内容说明</i>
-            </div>
-            <div>
-            <a href="home_edit"><button type="button">编辑</button></a>
-            <div class="classify" title="省份 · 城市">省份 · 城市</div>
-            </div>
-            <div class="clearfix"></div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="mar_ls">
-          <div class="bor_white">
-            <div class="p_img"><img src="/images/notpic.gif" /></div>
-          </div>
-          <div class="inpull">
-            <div class="ktext">
-              <em title="标题名称文字-大字">标题名称文字-大字</em>
-              <i title="简短的文字内容说明">简短的文字内容说明</i>
-            </div>
-            <div>
-            <a href="home_edit"><button type="button">编辑</button></a>
-            <div class="classify" title="省份 · 城市">省份 · 城市</div>
-            </div>
-            <div class="clearfix"></div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="mar_ls">
-          <div class="bor_white">
-            <div class="p_img"><img src="/images/notpic.gif" /></div>
-          </div>
-          <div class="inpull">
-            <div class="ktext">
-              <em title="标题名称文字-大字">标题名称文字-大字</em>
-              <i title="简短的文字内容说明">简短的文字内容说明</i>
-            </div>
-            <div>
-            <a href="home_edit"><button type="button">编辑</button></a>
-            <div class="classify" title="省份 · 城市">省份 · 城市</div>
-            </div>
-            <div class="clearfix"></div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="mar_ls">
-          <div class="bor_white">
-            <div class="p_img"><img src="/images/notpic.gif" /></div>
-          </div>
-          <div class="inpull">
-            <div class="ktext">
-              <em title="标题名称文字-大字">标题名称文字-大字</em>
-              <i title="简短的文字内容说明">简短的文字内容说明</i>
-            </div>
-            <div>
-            <a href="home_edit"><button type="button">编辑</button></a>
-            <div class="classify" title="省份 · 城市">省份 · 城市</div>
-            </div>
-            <div class="clearfix"></div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="mar_ls">
-          <div class="bor_white">
-            <div class="p_img"><img src="/images/notpic.gif" /></div>
-          </div>
-          <div class="inpull">
-            <div class="ktext">
-              <em title="标题名称文字-大字">标题名称文字-大字</em>
-              <i title="简短的文字内容说明">简短的文字内容说明</i>
-            </div>
-            <div>
-            <a href="home_edit"><button type="button">编辑</button></a>
-            <div class="classify" title="省份 · 城市">省份 · 城市</div>
-            </div>
-            <div class="clearfix"></div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="mar_ls">
-          <div class="bor_white">
-            <div class="p_img"><img src="/images/notpic.gif" /></div>
-          </div>
-          <div class="inpull">
-            <div class="ktext">
-              <em title="标题名称文字-大字">标题名称文字-大字</em>
-              <i title="简短的文字内容说明">简短的文字内容说明</i>
-            </div>
-            <div>
-            <a href="home_edit"><button type="button">编辑</button></a>
-            <div class="classify" title="省份 · 城市">省份 · 城市</div>
-            </div>
-            <div class="clearfix"></div>
-          </div>
-        </div>
-      </li>
+	@endforeach
   	</ul>
   </div>
 </div>

@@ -20,7 +20,7 @@ $(document).ready(function(){
 	<a data-menuanchor="page1" class="active" id="totop" href="#page1">第一屏【作返回顶部】</a>
 </div>
 <div id="fullpage" class="allmian">
-  <div class="section" style="background-image: url(../storage/home_img/index_bg1.jpg);">
+  <div class="section" style="background-image: url({{$homes->get(0)->path}});">
     <div class="pp_title">
       <i class="sp1" rel="-235,0,0,0"><div class="top_Atah top_Atah_p1" style="display:none;"><span>ATAH</span></div></i>
     </div>
@@ -28,36 +28,36 @@ $(document).ready(function(){
       <div class="tx_lt to_one">
         <div class="pos_rel ts1a ts_r" rel="750,0,0,0">
           <div class="pt_title pt_Rb2">
-            <em><a href="wk_details">中纺艺展中心</a></em>
+            <em><a href="wk_details">{{$homes->get(0)->name}}</a></em>
           </div>
           <div class="pt_title_bor pt_Rb2"></div>
         </div>
         <div class="pt_text2 pt_Rb2 pos_rel ts1b ts_r" rel="750,0,0,0">
-            <p>空间与结构的旋钮之力</p>
-            <p>浙江 · 绍兴</p>
+            <p>{{$homes->get(0)->desc}}</p>
+            <p>{{$homes->get(0)->addr}}</p>
         </div>
       </div>
       <div class="dn_lding" style="display:none;"><img src="images/down_landing.png" /></div>
     </div>
   </div>
-  <div class="section" style="background-image: url(../storage/home_img/index_bg2.jpg);">
+  <div class="section" style="background-image: url({{$homes->get(1)->path}});">
     <div class="pp_cont box_cont2">
       <div class="tx_rt to_one">
         <div class="pos_rel ts2a ts_l" rel="-750,0,0,0">
           <div class="pt_title pt_Lb1">
-            <em><a href="wk_details">中纺国际时尚中心</a></em>
+            <em><a href="wk_details">{{$homes->get(1)->name}}</a></em>
           </div>
           <div class="pt_title_bor pt_Lb1"></div>
         </div>
         <div class="pt_text2 pt_Lb1 pos_rel ts2b ts_l" rel="-750,0,0,0">
-            <p>艺术介入商业的体验聚场</p>
-            <p>浙江 · 绍兴</p>
+            <p>{{$homes->get(1)->desc}}</p>
+            <p>{{$homes->get(1)->addr}}</p>
         </div>
       </div>
       <div class="dn_lding"><img src="images/down_landing.png" /></div>
     </div>
   </div>
-  <div class="section" style="background-image: url(../storage/home_img/index_bg3.jpg);">
+  <div class="section" style="background-image: url({{$homes->get(2)->path}});">
     <div class="pp_title">
       <i class="sp3" rel="235,0,0,0"><div class="top_Logo top_Logo_p1"><span><img src="images/top_logo.png"></span></div></i>
     </div>
@@ -65,166 +65,166 @@ $(document).ready(function(){
       <div class="tx_lt to_one">
         <div class="pos_rel ts3a ts_r" rel="750,0,0,0">
           <div class="pt_title pt_Rb2">
-            <em><a href="wk_details">旱雪滑雪中心</a></em>
+            <em><a href="wk_details">{{$homes->get(2)->name}}</a></em>
           </div>
           <div class="pt_title_bor pt_Rb2"></div>
         </div>
         <div class="pt_text2 pt_Rb2 pos_rel ts3b ts_r" rel="750,0,0,0">
-            <p>大马山剪影的惊鸿一瞥</p>
-            <p>山东 · 青州</p>
+            <p>{{$homes->get(2)->desc}}</p>
+            <p>{{$homes->get(2)->addr}}</p>
         </div>
       </div>
       <div class="dn_lding"><img src="images/down_landing.png" /></div>
     </div>
   </div>
-  <div class="section" style="background-image: url(../storage/home_img/index_bg4.jpg);">
+  <div class="section" style="background-image: url({{$homes->get(3)->path}});">
     <div class="pp_cont box_cont2">
       <div class="tx_rt to_one">
         <div class="pos_rel ts4a ts_l" rel="-750,0,0,0">
           <div class="pt_title pt_Lb1">
-            <em><a href="wk_details">金领谷园区办公</a></em>
+            <em><a href="wk_details">{{$homes->get(3)->name}}</a></em>
           </div>
           <div class="pt_title_bor pt_Lb1"></div>
         </div>
         <div class="pt_text2 pt_Lb1 pos_rel ts4b ts_l" rel="-750,0,0,0">
-          <p>微缩城市的秩序之美</p>
-          <p>上海 · 吴泾</p>
+          <p>{{$homes->get(3)->desc}}</p>
+          <p>{{$homes->get(3)->addr}}</p>
         </div>
       </div>
       <div class="dn_lding"><img src="images/down_landing.png" /></div>
     </div>
   </div>
-  <div class="section" style="background-image: url(../storage/home_img/index_bg5.jpg);">
+  <div class="section" style="background-image: url({{$homes->get(4)->path}});">
     <div class="pp_cont box_cont1">
       <div class="tx_lt to_one">
         <div class="pos_rel ts5a ts_r" rel="750,0,0,0">
           <div class="pt_title pt_Rb2">
-            <em><a href="wk_details">老城文化艺术中心</a></em>
+            <em><a href="wk_details">{{$homes->get(4)->name}}</a></em>
           </div>
           <div class="pt_title_bor pt_Rb2"></div>
         </div>
         <div class="pt_text2 pt_Rb2 pos_rel ts5b ts_r" rel="750,0,0,0">
-          <p>四水归堂的现代演绎</p>
-          <p>江苏 · 盐城</p>
+          <p>{{$homes->get(4)->desc}}</p>
+          <p>{{$homes->get(4)->addr}}</p>
         </div>
       </div>
       <div class="dn_lding"><img src="images/down_landing.png" /></div>
     </div>
   </div>
-  <div class="section" style="background-image: url(../storage/home_img/index_bg6.jpg);">
+  <div class="section" style="background-image: url({{$homes->get(5)->path}});">
     <div class="pp_cont box_cont2">
       <div class="tx_rt to_one">
         <div class="pos_rel ts6a ts_l" rel="-750,0,0,0">
           <div class="pt_title pt_Lb1">
-            <em><a href="wk_details">莲花社区商业改造</a></em>
+            <em><a href="wk_details">{{$homes->get(5)->name}}</a></em>
           </div>
           <div class="pt_title_bor pt_Lb1"></div>
         </div>
         <div class="pt_text2 pt_Lb1 pos_rel ts6b ts_l" rel="-750,0,0,0">
-          <p>缝合混合商业的城市更新</p>
-          <p>上海 · 浦东</p>
+          <p>{{$homes->get(5)->desc}}</p>
+          <p>{{$homes->get(5)->addr}}</p>
         </div>
       </div>
       <div class="dn_lding"><img src="images/down_landing.png" /></div>
     </div>
   </div>
-  <div class="section" style="background-image: url(../storage/home_img/index_bg1.jpg);">
+  <div class="section" style="background-image: url({{$homes->get(6)->path}});">
     <div class="pp_cont box_cont1">
       <div class="tx_lt to_one">
         <div class="pos_rel ts7a ts_r" rel="750,0,0,0">
           <div class="pt_title pt_Rb2">
-            <em><a href="wk_details">中纺艺展中心</a></em>
+            <em><a href="wk_details">{{$homes->get(6)->name}}</a></em>
           </div>
           <div class="pt_title_bor pt_Rb2"></div>
         </div>
         <div class="pt_text2 pt_Rb2 pos_rel ts7b ts_r" rel="750,0,0,0">
-            <p>空间与结构的旋钮之力</p>
-            <p>浙江 · 绍兴</p>
+            <p>{{$homes->get(6)->desc}}</p>
+            <p>{{$homes->get(6)->addr}}</p>
         </div>
       </div>
       <div class="dn_lding" style="display:none;"><img src="images/down_landing.png" /></div>
     </div>
   </div>
-  <div class="section" style="background-image: url(../storage/home_img/index_bg2.jpg);">
+  <div class="section" style="background-image: url({{$homes->get(7)->path}});">
     <div class="pp_cont box_cont2">
       <div class="tx_rt to_one">
         <div class="pos_rel ts8a ts_l" rel="-750,0,0,0">
           <div class="pt_title pt_Lb1">
-            <em><a href="wk_details">中纺国际时尚中心</a></em>
+            <em><a href="wk_details">{{$homes->get(7)->name}}</a></em>
           </div>
           <div class="pt_title_bor pt_Lb1"></div>
         </div>
         <div class="pt_text2 pt_Lb1 pos_rel ts8b ts_l" rel="-750,0,0,0">
-            <p>艺术介入商业的体验聚场</p>
-            <p>浙江 · 绍兴</p>
+            <p>{{$homes->get(7)->desc}}</p>
+            <p>{{$homes->get(7)->addr}}</p>
         </div>
       </div>
       <div class="dn_lding"><img src="images/down_landing.png" /></div>
     </div>
   </div>
-  <div class="section" style="background-image: url(../storage/home_img/index_bg3.jpg);">
+  <div class="section" style="background-image: url({{$homes->get(8)->path}});">
     <div class="pp_cont box_cont1">
       <div class="tx_lt to_one">
         <div class="pos_rel ts9a ts_r" rel="750,0,0,0">
           <div class="pt_title pt_Rb2">
-            <em><a href="wk_details">旱雪滑雪中心</a></em>
+            <em><a href="wk_details">{{$homes->get(8)->name}}</a></em>
           </div>
           <div class="pt_title_bor pt_Rb2"></div>
         </div>
         <div class="pt_text2 pt_Rb2 pos_rel ts9b ts_r" rel="750,0,0,0">
-            <p>大马山剪影的惊鸿一瞥</p>
-            <p>山东 · 青州</p>
+            <p>{{$homes->get(8)->desc}}</p>
+            <p>{{$homes->get(8)->addr}}</p>
         </div>
       </div>
       <div class="dn_lding"><img src="images/down_landing.png" /></div>
     </div>
   </div>
-  <div class="section" style="background-image: url(../storage/home_img/index_bg4.jpg);">
+  <div class="section" style="background-image: url({{$homes->get(9)->path}});">
     <div class="pp_cont box_cont2">
       <div class="tx_rt to_one">
         <div class="pos_rel ts10a ts_l" rel="-750,0,0,0">
           <div class="pt_title pt_Lb1">
-            <em><a href="wk_details">金领谷园区办公</a></em>
+            <em><a href="wk_details">{{$homes->get(9)->name}}</a></em>
           </div>
           <div class="pt_title_bor pt_Lb1"></div>
         </div>
         <div class="pt_text2 pt_Lb1 pos_rel ts10b ts_l" rel="-750,0,0,0">
-          <p>微缩城市的秩序之美</p>
-          <p>上海 · 吴泾</p>
+          <p>{{$homes->get(9)->desc}}</p>
+          <p>{{$homes->get(9)->addr}}</p>
         </div>
       </div>
       <div class="dn_lding"><img src="images/down_landing.png" /></div>
     </div>
   </div>
-  <div class="section" style="background-image: url(../storage/home_img/index_bg5.jpg);">
+  <div class="section" style="background-image: url({{$homes->get(10)->path}});">
     <div class="pp_cont box_cont1">
       <div class="tx_lt to_one">
         <div class="pos_rel ts11a ts_r" rel="750,0,0,0">
           <div class="pt_title pt_Rb2">
-            <em><a href="wk_details">老城文化艺术中心</a></em>
+            <em><a href="wk_details">{{$homes->get(10)->name}}</a></em>
           </div>
           <div class="pt_title_bor pt_Rb2"></div>
         </div>
         <div class="pt_text2 pt_Rb2 pos_rel ts11b ts_r" rel="750,0,0,0">
-          <p>四水归堂的现代演绎</p>
-          <p>江苏 · 盐城</p>
+          <p>{{$homes->get(10)->desc}}</p>
+          <p>{{$homes->get(10)->addr}}</p>
         </div>
       </div>
       <div class="dn_lding"><img src="images/down_landing.png" /></div>
     </div>
   </div>
-  <div class="section" style="background-image: url(../storage/home_img/index_bg6.jpg);">
+  <div class="section" style="background-image: url({{$homes->get(11)->path}});">
     <div class="pp_cont box_cont2">
       <div class="tx_rt to_one">
         <div class="pos_rel ts12a ts_l" rel="-750,0,0,0">
           <div class="pt_title pt_Lb1">
-            <em><a href="wk_details">莲花社区商业改造</a></em>
+            <em><a href="wk_details">{{$homes->get(11)->name}}</a></em>
           </div>
           <div class="pt_title_bor pt_Lb1"></div>
         </div>
         <div class="pt_text2 pt_Lb1 pos_rel ts12b ts_l" rel="-750,0,0,0">
-          <p>缝合混合商业的城市更新</p>
-          <p>上海 · 浦东</p>
+          <p>{{$homes->get(11)->desc}}</p>
+          <p>{{$homes->get(11)->addr}}</p>
         </div>
       </div>
       <div class="dn_lding"><img src="images/down_landing.png" /></div>

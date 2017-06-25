@@ -105,40 +105,76 @@ window.onload = function(){
     <!--<div class="release"><button type="button">发布</button></div>-->
   </div>
   <div class="pic_edit">
-    <div class="p_img" id="preview">
-      <img id="imghead" src='/images/notpic.gif'>
-    </div>
-    <div class="uplond">
-       <input type="text" id="uptext" value="请上传图片：1920x1080px；大小200k以内"  name="textfield" />  
-       <button type="button">浏览</button>
-       <input type="file" name="fileField" class="file" id="fileField"  onchange="previewImage(this),document.getElementById('uptext').value=this.value" />
-    </div>
-    <div>
-      <input type="text" id="bigtext_cn" value="请输入15字内的项目名称-大字" />
-    </div>
-    <div>
-      <input type="text" id="smalltext_cn" value="请输入22字内的内容说明-小字" />
-    </div>
-    <div>
-      <input type="text" id="wheretext_cn" value="请输入省份名 · 城市名" />
-    </div>
-    <div class="hrs clearfix"></div>
-    <div>
-      <input type="text" id="bigtext_en" value="Enter within 40 character project name - big" />
-    </div>
-    <div>
-      <input type="text" id="smalltext_en" value="Enter within 60 character project description - small" />
-    </div>
-    <div>
-      <input type="text" id="wheretext_en" value="Enter City · Province" />
-    </div>
-    <div>
-      <a href="home.html"><button type="button">确认</button></a>
-    </div>
+	<form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/home_edit/store') }}" enctype="multipart/form-data">
+		{{ csrf_field() }}
+		<input name="id" value="{{$home->id}}" hidden/>
 
-		
-    
-    
+		<div class="p_img" id="preview">
+			<img id="imghead" src='{{$home->path}}'>
+		</div>
+		<div class="uplond">
+			<input type="text" id="uptext" value="请上传图片：1920x1080px；大小200k以内"  name="textfield" />
+			<button type="button">浏览</button>
+			<input type="file" name="fileField" class="file" id="fileField"  onchange="previewImage(this),document.getElementById('uptext').value=this.value" />
+			@if ($errors->has('fileField'))
+				<span class="help-block">
+					<strong>{{ $errors->first('fileField') }}</strong>
+				</span>
+			@endif
+		</div>
+		<div>
+			<input type="text" name="name_cn" id="bigtext_cn" hint="请输入15字内的项目名称-大字" value="{{$home->name_cn}}"/>
+			@if ($errors->has('name_cn'))
+				<span class="help-block">
+					<strong>{{ $errors->first('name_cn') }}</strong>
+				</span>
+			@endif
+		</div>
+		<div>
+			<input type="text" name="desc_cn" id="smalltext_cn" placeholder="请输入22字内的内容说明-小字" value="{{$home->desc_cn}}"/>
+			@if ($errors->has('desc_cn'))
+				<span class="help-block">
+					<strong>{{ $errors->first('desc_cn') }}</strong>
+				</span>
+			@endif
+		</div>
+		<div>
+			<input type="text" name="addr_cn" id="wheretext_cn" placeholder="请输入省份名 · 城市名" value="{{$home->addr_cn}}"/>
+			@if ($errors->has('addr_cn'))
+				<span class="help-block">
+					<strong>{{ $errors->first('addr_cn') }}</strong>
+				</span>
+			@endif
+		</div>
+		<div class="hrs clearfix"></div>
+		<div>
+			<input type="text" name="name_en" id="bigtext_en" placeholder="Enter within 40 character project name - big" value="{{$home->name_en}}"/>
+			@if ($errors->has('name_en'))
+				<span class="help-block">
+					<strong>{{ $errors->first('name_en') }}</strong>
+				</span>
+			@endif
+		</div>
+		<div>
+			<input type="text" name="desc_en" id="smalltext_en" placeholder="Enter within 60 character project description - small" value="{{$home->desc_en}}"/>
+			@if ($errors->has('desc_en'))
+				<span class="help-block">
+					<strong>{{ $errors->first('desc_en') }}</strong>
+				</span>
+			@endif
+		</div>
+		<div>
+			<input type="text" name="addr_en" id="wheretext_en" placeholder="Enter City · Province" value="{{$home->addr_en}}"/>
+			@if ($errors->has('addr_en'))
+				<span class="help-block">
+					<strong>{{ $errors->first('addr_en') }}</strong>
+				</span>
+			@endif
+		</div>
+		<div>
+			<a href="home.html"><button type="submit">确认</button></a>
+		</div>
+	</form>
   </div>
 </div>
 @endsection

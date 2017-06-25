@@ -13,12 +13,12 @@
   <div class="m_van">
     <div class="m_list">
       <ul>
-        <li><a href="/" class="{{$home}}">{{trans('menu.home')}}</a></li>
-        <li><a href="profile" class="{{$profile}}">{{trans('menu.profile')}}</a></li>
-        <li><a href="works" class="{{$works}}">{{trans('menu.works')}}</a></li>
-        <li><a href="media" class="{{$media}}">{{trans('menu.media')}}</a></li>
-        <li><a href="events" class="{{$events}}">{{trans('menu.events')}}</a></li>
-        <li><a href="jobs" class="{{$jobs}}">{{trans('menu.jobs')}}</a></li>
+        <li><a href="/index" class="{{$home}}">{{trans('menu.home')}}</a></li>
+        <li><a href="/profile" class="{{$profile}}">{{trans('menu.profile')}}</a></li>
+        <li><a href="/works" class="{{$works}}">{{trans('menu.works')}}</a></li>
+        <li><a href="/media" class="{{$media}}">{{trans('menu.media')}}</a></li>
+        <li><a href="/events" class="{{$events}}">{{trans('menu.events')}}</a></li>
+        <li><a href="/jobs" class="{{$jobs}}">{{trans('menu.jobs')}}</a></li>
       </ul>
     </div>
     <div class="m_Logo">ATAH</div>
