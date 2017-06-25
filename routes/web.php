@@ -41,7 +41,8 @@ Route::group(['prefix' => 'admin', 'middleware'=>['auth','locale']], function(){
 	Route::get('/home_edit/{id}', 'HomeController@edit');
 	Route::post('/home_edit/store', 'HomeController@store');
 
-	Route::get('/profile', 'ProfileController@index');
+	Route::get('/profile/{lan?}', 'ProfileController@index');
+	Route::post('/profile/store', 'ProfileController@store');
 
 	Route::get('/works', 'WorkController@index');
 

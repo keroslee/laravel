@@ -63,7 +63,7 @@ opacity:0.8;
 .L_menu .ic_td{ background-position:-26px 0px;}
 .L_menu .ic_td:hover{ background-position:-26px -26px;}
 .L_menu .ic_logo{ background:url(../images/ic_logo.png) no-repeat; background-size:30px 29px; width:30px; height:29px; display:block; overflow:hidden; position:absolute; top:47%; margin-top:19px; left:22px; z-index:5;}
-.L_menu .ic_encn{position:absolute; bottom:22px; left:22px; font-size:18px; width:30px; text-align:center; z-index:5;}
+.L_menu .ic_encn{position:absolute; bottom:22px; left:22px; font-size:18px; width:40px; text-align:center; z-index:5;}
 .L_menu .ic_encn a{color:#13ffc9;
 filter:Alpha(opacity=80);
 opacity:0.8;

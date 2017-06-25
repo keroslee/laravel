@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Home;
-use App\Work;
+use App\Profile;
 
 class DatabaseSeeder extends Seeder
 {
@@ -61,6 +61,40 @@ class DatabaseSeeder extends Seeder
 		Home::updateOrCreate(
 			['id'=>12],
 			['path'=>'/storage/home_img/index_bg6.jpg', 'name_cn'=>'莲花社区商业改造', 'desc_cn'=>'缝合混合商业的城市更新', 'addr_cn'=>'上海 · 浦东', 'name_en'=>'name6', 'desc_en'=>'desc6', 'addr_en'=>'addr6']
+		);
+
+		//profile
+		Profile::updateOrCreate(
+			['id'=>1],
+			['type'=>'practice', 'lan'=>'en', 'path'=>'']
+		);
+		Profile::updateOrCreate(
+			['id'=>2],
+			['type'=>'people', 'lan'=>'en', 'path'=>'']
+		);
+		Profile::updateOrCreate(
+			['id'=>3],
+			['type'=>'manifesto', 'lan'=>'en', 'path'=>'']
+		);
+		Profile::updateOrCreate(
+			['id'=>4],
+			['type'=>'contact', 'lan'=>'en', 'path'=>'']
+		);
+		Profile::updateOrCreate(
+			['id'=>5],
+			['type'=>'practice', 'lan'=>'cn', 'path'=>'']
+		);
+		Profile::updateOrCreate(
+			['id'=>6],
+			['type'=>'people', 'lan'=>'cn', 'path'=>'']
+		);
+		Profile::updateOrCreate(
+			['id'=>7],
+			['type'=>'manifesto', 'lan'=>'cn', 'path'=>'']
+		);
+		Profile::updateOrCreate(
+			['id'=>8],
+			['type'=>'contact', 'lan'=>'cn', 'path'=>'']
 		);
     }
 }

@@ -40,29 +40,29 @@ $(function(){
 <div class="wrapper">
   <div class="scroller four_list">
     <ul class="clearfix">
-      <li id="tp1" class="cur"><a href="#to1">Practice</a></li>
-      <li id="tp2"><a href="#to2">People</a></li>
-      <li id="tp3"><a href="#to3">Manifesto</a></li>
-      <li id="tp4"><a href="#to4">Contact</a></li>
+      <li id="tp1" class="cur"><a href="#to1">{{trans('menu.practice')}}</a></li>
+      <li id="tp2"><a href="#to2">{{trans('menu.people')}}</a></li>
+      <li id="tp3"><a href="#to3">{{trans('menu.manifesto')}}</a></li>
+      <li id="tp4"><a href="#to4">{{trans('menu.contact')}}</a></li>
     </ul>
   </div>
 </div>
 <div class="toF">
     <div id="to1" class="imgsbox clearfix" style="min-height:1200px; background:#09F">
       <div class="bk_bg"></div>
-      <strong>Practice</strong><!--去除上面style，该行替换图图片-->
+      <img src="{{$profiles->get('practice')->path}}"/>
     </div>
     <div id="to2" class="imgsbox clearfix" style="min-height:1200px; background:#F90">
     <div class="bk_bg"></div>
-    <strong>People</strong><!--去除上面style，该行替换图图片-->
+      <img src="{{$profiles->get('people')->path}}"/>
     </div>
     <div id="to3" class="imgsbox clearfix" style="min-height:1200px; background:#09F">
     <div class="bk_bg"></div>
-    <strong>Manifesto</strong><!--去除上面style，该行替换图图片-->
+      <img src="{{$profiles->get('manifesto')->path}}"/>
     </div>
     <div id="to4" class="imgsbox clearfix" style="min-height:1200px; background:#F90">
     <div class="bk_bg"></div>
-    <strong>Contact</strong><!--去除上面style，该行替换图图片-->
+      <img src="{{$profiles->get('contact')->path}}"/>
     </div>
 </div>
 @endsection
