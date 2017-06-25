@@ -14,32 +14,22 @@
 Route::group(['middleware' => 'locale'], function () {
 	Auth::routes();
 	Route::get('/', function () {
-		return view('index');
+		return redirect('/index');
 	});
 
-	Route::get('/profile', function () {
-		return view('profile');
-	});
+	Route::get('/index', 'HomeController@show');
 
-	Route::get('/works', function () {
-		return view('works');
-	});
+	Route::get('/profile', 'ProfileController@show');
 
-	Route::get('/wk_details', function () {
-		return view('wk_details');
-	});
+	Route::get('/works', 'WorkController@show');
 
-	Route::get('/media', function () {
-		return view('media');
-	});
+	Route::get('/wk_details', 'WorkController@detail');
 
-	Route::get('/events', function () {
-		return view('events');
-	});
+	Route::get('/media', 'MediaController@show');
 
-	Route::get('/jobs', function () {
-		return view('jobs');
-	});
+	Route::get('/events', 'EventController@show');
+
+	Route::get('/jobs', 'JobController@show');
 });
 
 Route::group(['prefix' => 'admin', 'middleware'=>'auth'], function(){
@@ -47,39 +37,23 @@ Route::group(['prefix' => 'admin', 'middleware'=>'auth'], function(){
 		return redirect('/admin/home');
 	});
 
-	Route::get('/home', function () {
-		return view('admin.home');
-	});
+	Route::get('/home', 'HomeController@index');
 
-	Route::get('/home_edit', function () {
-		return view('admin.home_edit');
-	});
+	Route::get('/home_edit', 'HomeController@edit');
 
-	Route::get('/profile', function () {
-		return view('admin.profile');
-	});
+	Route::get('/profile', 'ProfileController@index');
 
-	Route::get('/works', function () {
-		return view('admin.works');
-	});
+	Route::get('/works', 'WorkController@index');
 
-	Route::get('/works_edit', function () {
-		return view('admin.works_edit');
-	});
+	Route::get('/works_edit', 'WorkController@edit');
 
-	Route::get('/media', function () {
-		return view('admin.media');
-	});
+	Route::get('/media', 'MediaController@index');
 
-	Route::get('/events', function () {
-		return view('admin.events');
-	});
+	Route::get('/events', 'EventController@index');
 
-	Route::get('/jobs', function () {
-		return view('admin.jobs');
-	});
+	Route::get('/jobs', 'JobController@index');
 });
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home22', 'HomeController@index22');
 
 Route::get('/setLang/{lang}', 'SetlocaleController@index');
