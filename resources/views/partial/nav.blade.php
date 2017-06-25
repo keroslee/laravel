@@ -7,8 +7,8 @@
     </div>
     <!--标条背景-->
     <!--<div class="ic_bg"></div>-->
-	<?php $lan=['en'=>'cn','cn'=>'en'];?>
-    <div class="ic_encn"><a href="{{url('/setLang',$lan[Cookie::get('locale')])}}">{{trans('menu.toggle')}}</a></div>
+	<?php $lan=['en'=>'cn','cn'=>'en'];$loc=Cookie::get('locale');$loc=$loc?$loc:'en';?>
+    <div class="ic_encn"><a href="{{url('/setLang',$lan[$loc])}}">{{trans('menu.toggle')}}</a></div>
   </div>
   <div class="m_van">
     <div class="m_list">
