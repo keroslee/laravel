@@ -52,7 +52,9 @@ Route::group(['prefix' => 'admin', 'middleware'=>['auth','locale']], function(){
 
 	Route::get('/media', 'MediaController@index');
 
-	Route::get('/events', 'EventController@index');
+	Route::get('/events/{loc?}', 'EventController@index');
+	Route::post('/events/store', 'EventController@store');
+	Route::post('/events/del', 'EventController@del');
 
 	Route::get('/jobs', 'JobController@index');
 });

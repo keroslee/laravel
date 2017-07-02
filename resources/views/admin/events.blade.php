@@ -111,17 +111,30 @@ window.onload = function(){
   </div>
   <div class="top_list clearfix" style="width:600px;">
     <ul>
-      <li class="cur"><a href="events.html">中文</a></li>
-      <li><a href="events_en.html">英文</a></li>
+      <li class="{{$loc=='cn'?'cur':''}}"><a href="/admin/events/cn">中文</a></li>
+      <li class="{{$loc=='en'?'cur':''}}"><a href="/admin/events/en">英文</a></li>
     </ul>
   </div>
   <div class="pic_edit">
-    <div class="img-cont"></div> 
+    <div class="img-cont">
+		@foreach($events as $event)
+			<div>
+				<div>
+					<img src='{{$event->path}}' />
+				</div>
+				<a class='hide delete-btn' data-id="{{$event->id}}" data-url="/admin/events/del">删除</a>
+			</div>
+		@endforeach
+	</div> 
     <div class="uplond">
-       <input type="text" id="upimgs" value="请上传事件图：1280x800px；大小200k以内"  name="textfields" />  
-       <button type="button">浏览</button>
-       <input type="file" name="fileFields" class="file2"  id="fileFields" onchange="PreviewImage(this)" />
-       <div class="pop_but"><button type="button">确定</button></div>
+		<form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/events/store') }}" enctype="multipart/form-data">
+			{{ csrf_field() }}
+			<input name="loc" value="{{$loc}}" hidden/>
+		   <input type="text" id="upimgs" value="请上传事件图：1280x800px；大小200k以内"  name="textfields" />  
+		   <button type="button">浏览</button>
+		   <input type="file" name="fileFields[]" class="file2"  id="fileFields" onchange="PreviewImage(this)" multiple="multiple"/>
+		   <div class="pop_but"><button type="submit">确定</button></div>
+		</form>
     </div>
     
   </div>

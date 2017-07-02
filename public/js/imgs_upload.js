@@ -47,8 +47,9 @@ $(function(){
 		dom.on("click",function(){
 			//删除当前图片
 			var id=$(this).data('id');
-			if(id){
-				$.post('/admin/works_edit/del_pic', {'id':id,'_token':window.Laravel.csrfToken}).done(function(){
+			var url=$(this).data('url');
+			if(id && url){
+				$.post(url, {'id':id,'_token':window.Laravel.csrfToken}).done(function(){
 					dom.parent().remove();
 				}).fail(function(){
 					console.log('删除图片失败');

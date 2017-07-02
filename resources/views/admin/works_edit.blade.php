@@ -166,10 +166,10 @@ window.onload = function(){
 		<div class="img-cont">
 		@foreach($work->details as $detail)
 			<div>
-				<div id='"+id+"'>
+				<div >
 					<img src='{{$detail->path}}' />
 				</div>
-				<a class='hide delete-btn' data-id="{{$detail->id}}">删除</a>
+				<a class='hide delete-btn' data-id="{{$detail->id}}" data-url="/admin/works_edit/del_pic">删除</a>
 			</div>
 		@endforeach
 		</div>
