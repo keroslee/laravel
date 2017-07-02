@@ -21,7 +21,7 @@ Route::group(['middleware' => 'locale'], function () {
 
 	Route::get('/profile', 'ProfileController@show');
 
-	Route::get('/works', 'WorkController@show');
+	Route::get('/works/{tag?}', 'WorkController@show');
 
 	Route::get('/wk_details', 'WorkController@detail');
 
@@ -44,9 +44,10 @@ Route::group(['prefix' => 'admin', 'middleware'=>['auth','locale']], function(){
 	Route::get('/profile/{lan?}', 'ProfileController@index');
 	Route::post('/profile/store', 'ProfileController@store');
 
-	Route::get('/works', 'WorkController@index');
-
-	Route::get('/works_edit', 'WorkController@edit');
+	Route::get('/works/{tag?}', 'WorkController@index');
+	Route::get('/works_edit/{work?}', 'WorkController@edit');
+	Route::post('/works_edit/store', 'WorkController@store');
+	Route::post('/works/del', 'WorkController@del');
 
 	Route::get('/media', 'MediaController@index');
 

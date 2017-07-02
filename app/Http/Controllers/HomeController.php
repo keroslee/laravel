@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Home;
 use Illuminate\Support\Facades\Storage;
-use Log;
 
 class HomeController extends Controller
 {

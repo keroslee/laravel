@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Home;
 use App\Profile;
+use App\Tag;
 
 class DatabaseSeeder extends Seeder
 {
@@ -95,6 +96,44 @@ class DatabaseSeeder extends Seeder
 		Profile::updateOrCreate(
 			['id'=>8],
 			['type'=>'contact', 'lan'=>'cn', 'path'=>'']
+		);
+
+		//tag
+		Tag::updateOrCreate(
+			['id'=>1],
+			['en'=>'S', 'cn'=>'小']
+		);
+		Tag::updateOrCreate(
+			['id'=>2],
+			['en'=>'M', 'cn'=>'中']
+		);
+		Tag::updateOrCreate(
+			['id'=>3],
+			['en'=>'L', 'cn'=>'大']
+		);
+		Tag::updateOrCreate(
+			['id'=>4],
+			['en'=>'XL', 'cn'=>'超大']
+		);
+		Tag::updateOrCreate(
+			['id'=>5],
+			['en'=>'Culture & Hotel', 'cn'=>'文化 & 酒店']
+		);
+		Tag::updateOrCreate(
+			['id'=>6],
+			['en'=>'Commercial & Sport', 'cn'=>'商业 & 体育']
+		);
+		Tag::updateOrCreate(
+			['id'=>7],
+			['en'=>'Office', 'cn'=>'办公']
+		);
+		Tag::updateOrCreate(
+			['id'=>8],
+			['en'=>'House & Interior', 'cn'=>'场所 & 室内']
+		);
+		Tag::updateOrCreate(
+			['id'=>9],
+			['en'=>'Planning & Landscape', 'cn'=>'规划 & 景观']
 		);
     }
 }
