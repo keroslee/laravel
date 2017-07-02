@@ -1,0 +1,1 @@
+mklink /j storage ..\storage\app\public
