@@ -1,7 +1,7 @@
 @extends('layouts.atah')
 
 @section('content')
-<script src="js/slides-1.1.1-min.js" type="text/javascript"></script>
+<script src="/js/slides-1.1.1-min.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(function(){
 	$('#sildes').olvSlides(
@@ -54,7 +54,15 @@ window.onresize = function(){
       <div class="thumbCont">
         <ul id="sdul">
           <!--img属性：src=小图, bigimg=大图, alt=标题-->
-          <li><div class="imgSmall"><img src="../storage/details_img/details_01.jpg" bigImg="../storage/details_img/details_01.jpg" title="" /></div><div class="ss_bg"></div></li>
+		  @forelse($details as $detail)
+          <li>
+			<div class="imgSmall">
+				<img src="{{$detail->path}}" bigImg="{{$detail->path}}" title="" />
+			</div>
+			<div class="ss_bg"></div>
+		  </li>
+		  @empty
+		  <li><div class="imgSmall"><img src="../storage/details_img/details_01.jpg" bigImg="../storage/details_img/details_01.jpg" title="" /></div><div class="ss_bg"></div></li>
           <li><div class="imgSmall"><img src="../storage/details_img/details_02.jpg" bigImg="../storage/details_img/details_02.jpg" title="" /></div><div class="ss_bg"></div></li>
           <li><div class="imgSmall"><img src="../storage/details_img/details_03.jpg" bigImg="../storage/details_img/details_03.jpg" title="" /></div><div class="ss_bg"></div></li>
           <li><div class="imgSmall"><img src="../storage/details_img/details_04.jpg" bigImg="../storage/details_img/details_04.jpg" title="" /></div><div class="ss_bg"></div></li>
@@ -66,6 +74,7 @@ window.onresize = function(){
           <li><div class="imgSmall"><img src="../storage/details_img/details_04.jpg" bigImg="../storage/details_img/details_04.jpg" title="" /></div><div class="ss_bg"></div></li>
           <li><div class="imgSmall"><img src="../storage/details_img/details_05.jpg" bigImg="../storage/details_img/details_05.jpg" title="" /></div><div class="ss_bg"></div></li>
           <li><div class="imgSmall"><img src="../storage/details_img/details_06.jpg" bigImg="../storage/details_img/details_06.jpg" title="" /></div><div class="ss_bg"></div></li>
+		  @endforelse
         </ul>
       </div>
     </div>

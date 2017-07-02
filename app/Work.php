@@ -9,4 +9,7 @@ class Work extends Model
     public function tags(){
 		return $this->hasMany('App\WorkTag');
 	}
+    public function details(){
+		return $this->hasMany('App\WorkDetail');
+	}
 }

@@ -23,7 +23,7 @@ Route::group(['middleware' => 'locale'], function () {
 
 	Route::get('/works/{tag?}', 'WorkController@show');
 
-	Route::get('/wk_details', 'WorkController@detail');
+	Route::get('/wk_details/{workId?}', 'WorkController@detail');
 
 	Route::get('/media', 'MediaController@show');
 
@@ -45,9 +45,10 @@ Route::group(['prefix' => 'admin', 'middleware'=>['auth','locale']], function(){
 	Route::post('/profile/store', 'ProfileController@store');
 
 	Route::get('/works/{tag?}', 'WorkController@index');
+	Route::post('/works/del', 'WorkController@del');
 	Route::get('/works_edit/{work?}', 'WorkController@edit');
 	Route::post('/works_edit/store', 'WorkController@store');
-	Route::post('/works/del', 'WorkController@del');
+	Route::post('/works_edit/del_pic', 'WorkController@delPic');
 
 	Route::get('/media', 'MediaController@index');
 

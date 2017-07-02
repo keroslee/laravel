@@ -60,7 +60,7 @@ $(function(){
   <ul class="clearfix">
     @foreach($works as $work)
 	  <li>
-	    <a href="wk_details">
+	    <a href="/wk_details/{{$work->id}}">
             <div class="photo"><img class="small"  data-original="{{$work->thumb}}" src="/images/grey.gif"></div>
 			<div class="rsp" style="display: none;"></div>
 			<div class="text" style="display: none;"><h1>{{$work['name_'.$loc]}}</h1>

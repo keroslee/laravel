@@ -125,6 +125,11 @@ window.onload = function(){
 			<input type="text" id="uptext" value="请上传缩略图：640x430px；大小150k以内"  name="textfield" />
 			<button type="button">浏览</button>
 			<input type="file" name="fileField" class="file" id="fileField" onchange="previewImage(this),document.getElementById('uptext').value=this.value" />
+			@if ($errors->has('fileField'))
+				<span class="help-block">
+					<strong>{{ $errors->first('fileField') }}</strong>
+				</span>
+			@endif
 		</div>
 		<div>
 			<input type="text" id="posttext_cn" placeholder="请输入15字内的项目名称" name="name_cn" value="{{$work->name_cn}}"/>
@@ -158,11 +163,20 @@ window.onload = function(){
 
 		<div class="hrs clearfix"></div>
 		
-		<div class="img-cont"></div>
+		<div class="img-cont">
+		@foreach($work->details as $detail)
+			<div>
+				<div id='"+id+"'>
+					<img src='{{$detail->path}}' />
+				</div>
+				<a class='hide delete-btn' data-id="{{$detail->id}}">删除</a>
+			</div>
+		@endforeach
+		</div>
 		<div class="uplond">
 			<input type="text" id="upimgs" value="请上传详情图：1280x800px；大小200k以内"  name="textfields" />
 			<button type="button">浏览</button>
-			<input type="file" name="fileFields" class="file2"  id="fileFields" onchange="PreviewImage(this)" />
+			<input type="file" name="fileFields[]" class="file2"  id="fileFields" onchange="PreviewImage(this)" multiple="multiple"/>
 		</div>
 		<div>
 			<button type="submit">确认</button>
