@@ -169,17 +169,23 @@ window.onload = function(){
   </div>
   <div class="top_list clearfix" style="width:600px;">
     <ul>
-      <li class="cur"><a href="jobs.html">中文</a></li>
-      <li><a href="jobs_en.html">英文</a></li>
+      <li class="{{$loc=='cn'?'cur':''}}"><a href="/admin/jobs/cn">中文</a></li>
+      <li class="{{$loc=='en'?'cur':''}}"><a href="/admin/jobs/en">英文</a></li>
     </ul>
   </div>
   <div class="pic_edit">
-    <div class="k_img" id="preview1"></div>
+    <div class="k_img" id="preview1">
+		<img id="imghead1" src="{{$job->path}}" width="900" height="900">
+	</div>
     <div class="uplond">
+		<form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/jobs/store') }}" enctype="multipart/form-data">
+			{{ csrf_field() }}
+			<input name="loc" value="{{$loc}}" hidden/>
        <input type="text" id="uptext1" value="请上传求职图片：1920px宽；大小200k以内"  name="textfield" />  
        <button type="button">浏览</button>
        <input type="file" name="fileField" class="file cur1" id="fileField"  onchange="previewImage1(this),document.getElementById('uptext1').value=this.value" />
-       <div class="pop_but"><button type="button">确定</button></div>
+       <div class="pop_but"><button type="submit">确定</button></div>
+	   </form>
     </div>
 
   </div>

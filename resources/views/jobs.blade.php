@@ -19,7 +19,7 @@
 
 <div class="toF">
     <div class="imgsbox clearfix" style="height:1200px; background:#F90">
-      <strong>JOBS</strong>
+	  <img src="{{$job->path}}"/>
     </div>
 </div>
 @endsection

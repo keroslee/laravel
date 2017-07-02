@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Event;
-use Log;
 
 class EventController extends Controller
 {
@@ -24,7 +23,6 @@ class EventController extends Controller
 
 	public function store(Request $request)
 	{
-		Log::info($request);
 		if($request->hasFile('fileFields')){
 			foreach($request->fileFields as $file){
 				$fileName = md5($file).'.'.$file->extension();

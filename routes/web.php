@@ -56,7 +56,9 @@ Route::group(['prefix' => 'admin', 'middleware'=>['auth','locale']], function(){
 	Route::post('/events/store', 'EventController@store');
 	Route::post('/events/del', 'EventController@del');
 
-	Route::get('/jobs', 'JobController@index');
+	Route::get('/jobs/{loc?}', 'JobController@index');
+	Route::post('/jobs/store', 'JobController@store');
+	Route::post('/jobs/del', 'JobController@del');
 });
 
 Route::get('/home22', 'HomeController@index22');
