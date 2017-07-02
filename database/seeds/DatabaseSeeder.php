@@ -135,5 +135,15 @@ class DatabaseSeeder extends Seeder
 			['id'=>9],
 			['en'=>'Planning & Landscape', 'cn'=>'规划 & 景观']
 		);
+
+		//jobs
+		Job::updateOrCreate(
+			['id'=>1],
+			['path'=>'/storage/home_img/index_bg1.jpg']
+		);
+		Job::updateOrCreate(
+			['id'=>2],
+			['path'=>'/storage/home_img/index_bg2.jpg']
+		);
     }
 }
