@@ -12,7 +12,8 @@ class EventController extends Controller
     {
 		$loc=config('app.locale');
 		$events = Event::where('lan',$loc)->get();
-        return view('events', ['events'=>$events]);
+		$view = $this->isMobile()?'mobile.events':'events';
+        return view($view, ['events'=>$events]);
     }
 
 	public function index($loc='cn')

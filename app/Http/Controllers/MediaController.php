@@ -8,7 +8,8 @@ class MediaController extends Controller
 {
     public function show()
     {
-        return view('media');
+		$view = $this->isMobile()?'mobile.media':'media';
+        return view($view);
     }
 
 	public function index()

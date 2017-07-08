@@ -17,7 +17,9 @@ class HomeController extends Controller
     {
 		$loc = config('app.locale');
 		$homes = Home::select('id','path','name_'.$loc.' as name','desc_'.$loc.' as desc','addr_'.$loc.' as addr','target')->get();
-        return view('index', ['homes'=>$homes]);
+		
+		$view = $this->isMobile()?'mobile.index':'index';
+        return view($view, ['homes'=>$homes]);
     }
 
 	public function index()

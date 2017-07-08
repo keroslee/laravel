@@ -13,7 +13,8 @@ class ProfileController extends Controller
 		$loc = config('app.locale');
 		$profiles = Profile::where('lan',$loc)->get();
 		$profiles = $profiles->keyBy('type');
-        return view('profile',['profiles'=>$profiles, 'lan'=>$loc]);
+		$view = $this->isMobile()?'mobile.profile':'profile';
+        return view($view,['profiles'=>$profiles, 'lan'=>$loc]);
     }
 
 	public function index($lan=null)

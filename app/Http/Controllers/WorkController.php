@@ -24,7 +24,8 @@ class WorkController extends Controller
 		}
 		$tags = Tag::all();
 		$loc = config('app.locale');
-        return view('works', ['works'=>$works, "tags"=>$tags, 'tagCur'=>$tag, 'loc'=>$loc]);
+		$view = $this->isMobile()?'mobile.works':'works';
+        return view($view, ['works'=>$works, "tags"=>$tags, 'tagCur'=>$tag, 'loc'=>$loc]);
     }
 
 	public function index($tag=null)
@@ -45,7 +46,8 @@ class WorkController extends Controller
 	public function detail($workId=null)
 	{
 		$details = WorkDetail::where('work_id',$workId)->get();
-		return view('wk_details', ['details'=>$details]);
+		$view = $this->isMobile()?'mobile.wk_details':'wk_details';
+		return view($view, ['details'=>$details]);
     }
 
 	public function edit(Work $work)

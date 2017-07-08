@@ -1,7 +1,7 @@
 // JavaScript Document
 
 //判断手机与浏览器的显示
-try {
+/*try {
 	var urlhash = window.location.hash;
 	  if (!urlhash.match("fromapp"))
 	  {
@@ -10,7 +10,7 @@ try {
 	  }
 	}
 	catch(err){}
-
+*/
 /*---------------------------------------------*/
 //侧边弹窗
 $(function(){

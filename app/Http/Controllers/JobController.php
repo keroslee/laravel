@@ -12,7 +12,8 @@ class JobController extends Controller
     {
 		$loc=config('app.locale');
 		$job = Job::find($loc=='cn'?1:2);
-        return view('jobs', ['job'=>$job]);
+		$view = $this->isMobile()?'mobile.jobs':'jobs';
+        return view($view, ['job'=>$job]);
     }
 
 	public function index($loc='cn')
