@@ -62,7 +62,11 @@ $(function(){
 	  <li>
 	    <a href="/wk_details/{{$work->id}}">
             <div class="photo">
+			@if ($loop->index<20)
 				<img class="small" src="{{$work->thumb}}">
+			@else
+				<img class="small"  data-original="{{$work->thumb}}" src="/images/grey.gif">
+			@endif
 			</div>
 			<div class="rsp" style="display: none;"></div>
 			<div class="text" style="display: none;"><h1>{{$work['name_'.$loc]}}</h1>

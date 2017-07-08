@@ -177,7 +177,7 @@ window.onload = function(){
 		@endforeach
 		</div>
 		<div class="uplond">
-			<input type="text" id="upimgs" value="请上传详情图：1280x800px；大小200k以内"  name="textfields" />
+			<input type="text" id="upimgs" value="请上传详情图：1280x800px；大小400k以内"  name="textfields" />
 			<button type="button">浏览</button>
 			<input type="file" name="fileFields[]" class="file2"  id="fileFields" onchange="PreviewImage(this)" multiple="multiple"/>
 		</div>
