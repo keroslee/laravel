@@ -69,6 +69,7 @@ class HomeController extends Controller
 		$home->name_en=$request->name_en;
 		$home->desc_en=$request->desc_en;
 		$home->addr_en=$request->addr_en;
+		$home->target=$request->target;
 
 		$home->save();
 
