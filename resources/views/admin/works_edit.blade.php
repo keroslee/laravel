@@ -132,6 +132,7 @@ window.onload = function(){
 			@endif
 		</div>
 		<div>
+		请输入15字内的项目名称
 			<input type="text" id="posttext_cn" placeholder="请输入15字内的项目名称" name="name_cn" value="{{$work->name_cn}}"/>
 			@if ($errors->has('name_cn'))
 				<span class="help-block">
@@ -140,6 +141,7 @@ window.onload = function(){
 			@endif
 		</div>
 		<div>
+		Enter within 40 character project name
 			<input type="text" id="bigtext_en" placeholder="Enter within 40 character project name" name="name_en" value="{{$work->name_en}}"/>
 			@if ($errors->has('name_en'))
 				<span class="help-block">
@@ -148,6 +150,7 @@ window.onload = function(){
 			@endif
 		</div>
 		<div>
+		请输入项目时间，中英文格式：年/月/日
 			<input type="text" id="posttime" name="time" placeholder="请输入项目时间，中英文格式：年/月/日" value="{{$work->time}}"/>
 			@if ($errors->has('time'))
 				<span class="help-block">

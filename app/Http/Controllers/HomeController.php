@@ -16,7 +16,7 @@ class HomeController extends Controller
     public function show()
     {
 		$loc = config('app.locale');
-		$homes = Home::select('id','path','name_'.$loc.' as name','desc_'.$loc.' as desc','addr_'.$loc.' as addr')->get();
+		$homes = Home::select('id','path','name_'.$loc.' as name','desc_'.$loc.' as desc','addr_'.$loc.' as addr','target')->get();
         return view('index', ['homes'=>$homes]);
     }
 

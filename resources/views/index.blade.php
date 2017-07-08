@@ -28,7 +28,7 @@ $(document).ready(function(){
       <div class="tx_lt to_one">
         <div class="pos_rel ts1a ts_r" rel="750,0,0,0">
           <div class="pt_title pt_Rb2">
-            <em><a href="wk_details">{{$homes->get(0)->name}}</a></em>
+            <em><a href="{{$homes->get(0)->target}}">{{$homes->get(0)->name}}</a></em>
           </div>
           <div class="pt_title_bor pt_Rb2"></div>
         </div>
@@ -45,7 +45,7 @@ $(document).ready(function(){
       <div class="tx_rt to_one">
         <div class="pos_rel ts2a ts_l" rel="-750,0,0,0">
           <div class="pt_title pt_Lb1">
-            <em><a href="wk_details">{{$homes->get(1)->name}}</a></em>
+            <em><a href="{{$homes->get(1)->target}}">{{$homes->get(1)->name}}</a></em>
           </div>
           <div class="pt_title_bor pt_Lb1"></div>
         </div>
@@ -65,7 +65,7 @@ $(document).ready(function(){
       <div class="tx_lt to_one">
         <div class="pos_rel ts3a ts_r" rel="750,0,0,0">
           <div class="pt_title pt_Rb2">
-            <em><a href="wk_details">{{$homes->get(2)->name}}</a></em>
+            <em><a href="{{$homes->get(2)->target}}">{{$homes->get(2)->name}}</a></em>
           </div>
           <div class="pt_title_bor pt_Rb2"></div>
         </div>
@@ -82,7 +82,7 @@ $(document).ready(function(){
       <div class="tx_rt to_one">
         <div class="pos_rel ts4a ts_l" rel="-750,0,0,0">
           <div class="pt_title pt_Lb1">
-            <em><a href="wk_details">{{$homes->get(3)->name}}</a></em>
+            <em><a href="{{$homes->get(3)->target}}">{{$homes->get(3)->name}}</a></em>
           </div>
           <div class="pt_title_bor pt_Lb1"></div>
         </div>
@@ -99,7 +99,7 @@ $(document).ready(function(){
       <div class="tx_lt to_one">
         <div class="pos_rel ts5a ts_r" rel="750,0,0,0">
           <div class="pt_title pt_Rb2">
-            <em><a href="wk_details">{{$homes->get(4)->name}}</a></em>
+            <em><a href="{{$homes->get(4)->target}}">{{$homes->get(4)->name}}</a></em>
           </div>
           <div class="pt_title_bor pt_Rb2"></div>
         </div>
@@ -116,7 +116,7 @@ $(document).ready(function(){
       <div class="tx_rt to_one">
         <div class="pos_rel ts6a ts_l" rel="-750,0,0,0">
           <div class="pt_title pt_Lb1">
-            <em><a href="wk_details">{{$homes->get(5)->name}}</a></em>
+            <em><a href="{{$homes->get(5)->target}}">{{$homes->get(5)->name}}</a></em>
           </div>
           <div class="pt_title_bor pt_Lb1"></div>
         </div>
@@ -133,7 +133,7 @@ $(document).ready(function(){
       <div class="tx_lt to_one">
         <div class="pos_rel ts7a ts_r" rel="750,0,0,0">
           <div class="pt_title pt_Rb2">
-            <em><a href="wk_details">{{$homes->get(6)->name}}</a></em>
+            <em><a href="{{$homes->get(6)->target}}">{{$homes->get(6)->name}}</a></em>
           </div>
           <div class="pt_title_bor pt_Rb2"></div>
         </div>
@@ -150,7 +150,7 @@ $(document).ready(function(){
       <div class="tx_rt to_one">
         <div class="pos_rel ts8a ts_l" rel="-750,0,0,0">
           <div class="pt_title pt_Lb1">
-            <em><a href="wk_details">{{$homes->get(7)->name}}</a></em>
+            <em><a href="{{$homes->get(7)->target}}">{{$homes->get(7)->name}}</a></em>
           </div>
           <div class="pt_title_bor pt_Lb1"></div>
         </div>
@@ -167,7 +167,7 @@ $(document).ready(function(){
       <div class="tx_lt to_one">
         <div class="pos_rel ts9a ts_r" rel="750,0,0,0">
           <div class="pt_title pt_Rb2">
-            <em><a href="wk_details">{{$homes->get(8)->name}}</a></em>
+            <em><a href="{{$homes->get(8)->target}}">{{$homes->get(8)->name}}</a></em>
           </div>
           <div class="pt_title_bor pt_Rb2"></div>
         </div>
@@ -184,7 +184,7 @@ $(document).ready(function(){
       <div class="tx_rt to_one">
         <div class="pos_rel ts10a ts_l" rel="-750,0,0,0">
           <div class="pt_title pt_Lb1">
-            <em><a href="wk_details">{{$homes->get(9)->name}}</a></em>
+            <em><a href="{{$homes->get(9)->target}}">{{$homes->get(9)->name}}</a></em>
           </div>
           <div class="pt_title_bor pt_Lb1"></div>
         </div>
@@ -201,7 +201,7 @@ $(document).ready(function(){
       <div class="tx_lt to_one">
         <div class="pos_rel ts11a ts_r" rel="750,0,0,0">
           <div class="pt_title pt_Rb2">
-            <em><a href="wk_details">{{$homes->get(10)->name}}</a></em>
+            <em><a href="{{$homes->get(10)->target}}">{{$homes->get(10)->name}}</a></em>
           </div>
           <div class="pt_title_bor pt_Rb2"></div>
         </div>
@@ -218,7 +218,7 @@ $(document).ready(function(){
       <div class="tx_rt to_one">
         <div class="pos_rel ts12a ts_l" rel="-750,0,0,0">
           <div class="pt_title pt_Lb1">
-            <em><a href="wk_details">{{$homes->get(11)->name}}</a></em>
+            <em><a href="{{$homes->get(11)->target}}">{{$homes->get(11)->name}}</a></em>
           </div>
           <div class="pt_title_bor pt_Lb1"></div>
         </div>

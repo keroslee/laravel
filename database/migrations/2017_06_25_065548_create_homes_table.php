@@ -22,6 +22,7 @@ class CreateHomesTable extends Migration
             $table->string('name_en');
 			$table->string('desc_en');
 			$table->string('addr_en');
+			$table->string('target');
             $table->timestamps();
         });
     }

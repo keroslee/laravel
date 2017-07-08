@@ -58,7 +58,7 @@ class WorkController extends Controller
 	public function store(Request $request)
 	{
 		$validate = [
-			'fileField' => 'image|max:150|mimes:jpeg,png,gif,svg|dimensions:max_width=640,max_height=430',
+			'fileField' => 'image|max:400|mimes:jpeg,png,gif,svg|dimensions:max_width=640,max_height=430',
 			'name_cn' => 'required|max:15',
 			'name_en' => 'required|max:40',
 			'time' => 'required',

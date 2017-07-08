@@ -123,6 +123,7 @@ window.onload = function(){
 			@endif
 		</div>
 		<div>
+		请输入15字内的项目名称-大字
 			<input type="text" name="name_cn" id="bigtext_cn" hint="请输入15字内的项目名称-大字" value="{{$home->name_cn}}"/>
 			@if ($errors->has('name_cn'))
 				<span class="help-block">
@@ -131,6 +132,7 @@ window.onload = function(){
 			@endif
 		</div>
 		<div>
+		请输入22字内的内容说明-小字
 			<input type="text" name="desc_cn" id="smalltext_cn" placeholder="请输入22字内的内容说明-小字" value="{{$home->desc_cn}}"/>
 			@if ($errors->has('desc_cn'))
 				<span class="help-block">
@@ -139,6 +141,7 @@ window.onload = function(){
 			@endif
 		</div>
 		<div>
+		请输入省份名 · 城市名
 			<input type="text" name="addr_cn" id="wheretext_cn" placeholder="请输入省份名 · 城市名" value="{{$home->addr_cn}}"/>
 			@if ($errors->has('addr_cn'))
 				<span class="help-block">
@@ -148,6 +151,7 @@ window.onload = function(){
 		</div>
 		<div class="hrs clearfix"></div>
 		<div>
+		Enter within 40 character project name - big
 			<input type="text" name="name_en" id="bigtext_en" placeholder="Enter within 40 character project name - big" value="{{$home->name_en}}"/>
 			@if ($errors->has('name_en'))
 				<span class="help-block">
@@ -156,6 +160,7 @@ window.onload = function(){
 			@endif
 		</div>
 		<div>
+		Enter within 60 character project description - small
 			<input type="text" name="desc_en" id="smalltext_en" placeholder="Enter within 60 character project description - small" value="{{$home->desc_en}}"/>
 			@if ($errors->has('desc_en'))
 				<span class="help-block">
@@ -164,10 +169,19 @@ window.onload = function(){
 			@endif
 		</div>
 		<div>
+		Enter City · Province
 			<input type="text" name="addr_en" id="wheretext_en" placeholder="Enter City · Province" value="{{$home->addr_en}}"/>
 			@if ($errors->has('addr_en'))
 				<span class="help-block">
 					<strong>{{ $errors->first('addr_en') }}</strong>
+				</span>
+			@endif
+		</div>
+		<div>
+			目标链接<input type="text" name="target" id="target" placeholder="目标链接" value="{{$home->target}}"/>
+			@if ($errors->has('target'))
+				<span class="help-block">
+					<strong>{{ $errors->first('target') }}</strong>
 				</span>
 			@endif
 		</div>
