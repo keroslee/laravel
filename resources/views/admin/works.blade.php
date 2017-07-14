@@ -23,13 +23,17 @@ window.onresize = function(){
 		if(!confirm("确认要删除？")){ 
 		window.event.returnValue = false; 
 		}
-		var button=$(this)
-console.log($(this).data('id'));
-		$.post("/admin/works/del",{id:button.data('id'),_token:"{{csrf_token()}}"}).done(function(){
+		var button=$(this);
+		var id = $(this).data('id');
+		if(id){
+			$.post("/admin/works/del",{id:button.data('id'),_token:"{{csrf_token()}}"}).done(function(){
+				button.closest('li').remove();
+			}).fail(function(){
+				console.log("删除失败");
+			});
+		}else{
 			button.closest('li').remove();
-		}).fail(function(){
-			console.log("删除失败");
-		});
+		}
 	};
 </script>
 

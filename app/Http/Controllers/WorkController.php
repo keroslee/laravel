@@ -122,13 +122,16 @@ class WorkController extends Controller
 	public function del(Request $request)
 	{
 		$work = Work::find($request->id);
-		$this->delFile($work->thumb);
-		$work->delete();
-		
-		$workDeatils = WorkDetail::where('work_id',$request->id)->get();
-		foreach($workDeatils as $workDeatil){
-			$this->delFile($work->path);
-			$workDeatil->delete();
+		if($work)
+		{
+			$this->delFile($work->thumb);
+			$work->delete();
+			
+			$workDeatils = WorkDetail::where('work_id',$request->id)->get();
+			foreach($workDeatils as $workDeatil){
+				$this->delFile($workDeatil->path);
+				$workDeatil->delete();
+			}
 		}
         return redirect('/admin/works');
 	}
