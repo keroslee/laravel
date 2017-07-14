@@ -48,19 +48,19 @@ $(function(){
   </div>
 </div>
 <div class="toF">
-    <div id="to1" class="imgsbox clearfix" style="min-height:1200px; background:#09F">
+    <div id="to1" class="imgsbox clearfix" >
       <div class="bk_bg"></div>
       <img src="{{$profiles->get('practice')->path}}"/>
     </div>
-    <div id="to2" class="imgsbox clearfix" style="min-height:1200px; background:#F90">
+    <div id="to2" class="imgsbox clearfix" >
     <div class="bk_bg"></div>
       <img src="{{$profiles->get('people')->path}}"/>
     </div>
-    <div id="to3" class="imgsbox clearfix" style="min-height:1200px; background:#09F">
+    <div id="to3" class="imgsbox clearfix" >
     <div class="bk_bg"></div>
       <img src="{{$profiles->get('manifesto')->path}}"/>
     </div>
-    <div id="to4" class="imgsbox clearfix" style="min-height:1200px; background:#F90">
+    <div id="to4" class="imgsbox clearfix" >
     <div class="bk_bg"></div>
       <img src="{{$profiles->get('contact')->path}}"/>
     </div>

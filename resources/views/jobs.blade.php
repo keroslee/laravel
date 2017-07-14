@@ -18,7 +18,7 @@
 @include('partial.nav', ['home'=>'', 'profile'=>'', 'works'=>'', 'media'=>'', 'events'=>'', 'jobs'=>'act'])
 
 <div class="toF">
-    <div class="imgsbox clearfix" style="height:1200px; background:#F90">
+    <div class="imgsbox clearfix" style="background:#F90">
 	  <img src="{{$job->path}}"/>
     </div>
 </div>

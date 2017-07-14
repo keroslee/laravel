@@ -28,7 +28,7 @@ class ProfileController extends Controller
 	public function store(Request $request)
     {
 		$this->validate($request, [
-			'fileField' => 'image|max:400|mimes:jpeg,png,gif,svg|dimensions:max_width=1920',
+			'fileField' => 'image|max:1000|mimes:jpeg,png,gif,svg|dimensions:max_width=1920',
 			'id' => 'required',
 		]);
 

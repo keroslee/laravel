@@ -165,10 +165,16 @@
                         if (b.thumbDirection == "Y") {
                             F = C.children(":eq(0)").position().top;
                             c = ((D - p) / 2) - (p * w);
-                            if (c < s) {
-                                c = s
-                            } else {
-                                if (c > 0) {
+                            if (H >= 10) { 
+								if (c < s) { 
+									c = s
+								} else {
+									if (c >= 0) {
+										c = 0
+									}
+								} 
+							 } else {
+                                if (c >= 0) {
                                     c = 0
                                 }
                             }
@@ -180,10 +186,16 @@
                         } else {
                             F = C.children(":eq(0)").position().top;
                             c = ((D - p) / 2) - (p * w);
-                            if (c < s) {
-                                c = s
-                            } else {
-                                if (c > 0) {
+                            if (H >= 10) { 
+								if (c < s) { 
+									c = s
+								} else {
+									if (c >= 0) {
+										c = 0
+									}
+								} 
+							 } else {
+                                if (c >= 0) {
                                     c = 0
                                 }
                             }
@@ -331,13 +343,19 @@
                 C.children(":eq(0)").children().click(function(I) {
                     I.preventDefault();
                     c = ((D - p) / 2) - (p * a(this).index());
-                    if (c < s) {
-                        c = s
-                    } else {
-                        if (c > 0) {
-                            c = 0
-                        }
-                    }
+					if (H >= 10) { 
+						if (c < s) { 
+							c = s
+						} else {
+							if (c >= 0) {
+								c = 0
+							}
+						} 
+					 } else {
+						if (c >= 0) {
+							c = 0
+						}
+					}
                     if (b.play) {
                         l()
                     }

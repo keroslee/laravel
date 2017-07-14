@@ -37,7 +37,7 @@ class HomeController extends Controller
 	public function store(Request $request)
     {
 		$this->validate($request, [
-			'fileField' => 'image|max:200|mimes:jpeg,png,gif,svg|dimensions:max_width=1920,max_height=1080',
+			'fileField' => 'image|max:1000|mimes:jpeg,png,gif,svg|dimensions:max_width=1920,max_height=1080',
 			'name_cn' => 'required|max:255',
 			'desc_cn' => 'required|max:255',
 			'addr_cn' => 'required|max:255',
