@@ -118,23 +118,23 @@ class DatabaseSeeder extends Seeder
 		);
 		Tag::updateOrCreate(
 			['id'=>5],
-			['en'=>'Culture & Hotel', 'cn'=>'文化 & 酒店']
+			['en'=>'Commercial', 'cn'=>'商业']
 		);
 		Tag::updateOrCreate(
 			['id'=>6],
-			['en'=>'Commercial & Sport', 'cn'=>'商业 & 体育']
+			['en'=>'Office/Hotel', 'cn'=>'办公/酒店']
 		);
 		Tag::updateOrCreate(
 			['id'=>7],
-			['en'=>'Office', 'cn'=>'办公']
+			['en'=>'Culture/Sport', 'cn'=>'文化/体育']
 		);
 		Tag::updateOrCreate(
 			['id'=>8],
-			['en'=>'House & Interior', 'cn'=>'场所 & 室内']
+			['en'=>'House/Interior', 'cn'=>'场所/室内']
 		);
 		Tag::updateOrCreate(
 			['id'=>9],
-			['en'=>'Planning & Landscape', 'cn'=>'规划 & 景观']
+			['en'=>'Planning/Landscape', 'cn'=>'规划/景观']
 		);
 
 		//jobs
