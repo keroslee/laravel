@@ -305,6 +305,8 @@ opacity:0.75;
 .setlist .text h1{line-height:1.4em; overflow:hidden; width:100%; position:relative; z-index:5; margin-top:.2em; font-size:1.9em;}
 .setlist .text em{line-height:1.4em; overflow:hidden; width:100%; position:relative; z-index:5; font-size:1.3em;}
 /* ------------------------------------------------- */
+.ewm_img { width:60%; margin-left:auto; margin-right:auto;}
+.ewm_img img{width:100%; height:100%;}
 
 @media screen and (max-width: 375px){
 #uptop{bottom:.8em; right:.8em; width:3em; height:3em;}
@@ -332,8 +334,4 @@ opacity:0.75;
 .dl_img img{ width:100%; display:block; margin-bottom:2px;}
 
 
-
-
-
-
-.toF strong{ margin:300px auto 0 auto; display:block; text-align:center; font-size:26px;}
+.toF strong{ margin:280px auto 0 auto; display:block; text-align:center; font-size:26px;}

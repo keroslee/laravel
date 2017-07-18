@@ -29,25 +29,25 @@ $(function(){
 <div class="wrapper">
   <div class="scroller three_list">
     <ul class="clearfix">
-      <li id="tp1" class="cur"><a href="#to1">公众号</a></li>
-      <li id="tp2"><a href="#to2">Ins</a></li>
-      <li id="tp3"><a href="#to3">视频</a></li>
+      <li id="tp1" class="cur"><a href="#to1">{{trans('media.wechat')}}</a></li>
+      <li id="tp2"><a href="#to2">{{trans('media.ins')}}</a></li>
+      <li id="tp3"><a href="#to3">{{trans('media.video')}}</a></li>
     </ul>
   </div>
 </div>
 
 <div class="toF">
-    <div id="to1" class="clearfix" style="height:1200px; background:#09F">
+    <div id="to1" class="clearfix" style="height:1200px;">
       <div class="bk_bg2"></div>
-      <strong>公众号</strong>
+      <div class="ewm_img"><img id="ewm" src="/images/atah_ewm.jpg" /></div>
     </div>
-    <div id="to2" class="clearfix" style="height:1200px; background:#F90">
+    <div id="to2" class="clearfix" style="height:1200px;">
     <div class="bk_bg2"></div>
-    <strong>Ins</strong>
+    <strong>{{trans('media.comingSoon')}}</strong>
     </div>
-    <div id="to3" class="clearfix" style="height:1200px; background:#09F">
+    <div id="to3" class="clearfix" style="height:1200px;">
     <div class="bk_bg2"></div>
-    <strong>视频</strong>
+    <strong>{{trans('media.comingSoon')}}</strong>
     </div>
 </div>
 
@@ -67,7 +67,7 @@ $(function(){
             {winWidth = document.documentElement.clientWidth;}
         $('.L_menu .bar').css ("width",winWidth);
         $('.L_menu .bar').css ("left",-winWidth);
-		
+		$('.ewm_img').css ('paddingTop',document.documentElement.clientHeight / 2 - document.getElementById('ewm').offsetHeight / 2 - 110 +"px");
 
     }
     autodivsize();

@@ -2,17 +2,6 @@
 
 @section('content')
 <script type="text/javascript">
-
-    window.onload=auto_boxs;
-	function auto_boxs()
-	{
-        $('.scroller').css ('width',document.documentElement.clientWidth -76 +"px");
-        $('.ewm_img').css ('marginTop',(document.documentElement.clientHeight -  document.getElementById("ewm").offsetHeight) / 2  +"px");
-	}
-	auto_boxs();
-	onresize=auto_boxs;
-</script>
-<script type="text/javascript">
 //标签点击and滚条切换
 $(function(){
 	 $(window).scroll(function(){
@@ -41,26 +30,48 @@ $(function(){
 <div class="wrapper">
   <div class="scroller three_list">
     <ul class="clearfix">
-      <li id="tp1" class="cur"><a href="#to1">Wechat</a></li>
-      <li id="tp2"><a href="#to2">Ins</a></li>
-      <li id="tp3"><a href="#to3">Video</a></li>
+      <li id="tp1" class="cur"><a href="#to1">{{trans('media.wechat')}}</a></li>
+      <li id="tp2"><a href="#to2">{{trans('media.ins')}}</a></li>
+      <li id="tp3"><a href="#to3">{{trans('media.video')}}</a></li>
     </ul>
   </div>
 </div>
 
 <div class="toF">
-    <div id="to1" class=" clearfix" style="min-height:1200px; background:#09F">
-      <div class="bk_bg"></div>
-      <strong>Wechat</strong>
-      <!--<div class="ewm_img"></div>-->
-    </div>
-    <div id="to2" class="clearfix" style="min-height:1200px; background:#F90">
+    <div id="to1" class="clearfix">
     <div class="bk_bg"></div>
-    <strong>Ins</strong>
+    <div class="pheight">
+      <div class="ewm_img"><img id="ewm" src="/images/atah_ewm.jpg" /></div>
     </div>
-    <div id="to3" class="clearfix" style="min-height:1200px; background:#09F">
+    </div>
+    <div id="to2" class="clearfix">
     <div class="bk_bg"></div>
-    <strong>Video</strong>
+    <div class="pheight">
+      <div class="text_fn"><strong id="txt">{{trans('media.comingSoon')}}</strong></div>
+    </div>
+    </div>
+    <div id="to3" class="clearfix">
+    <div class="bk_bg"></div>
+    <div class="pheight">
+      <div class="text_fn"><strong id="txt">{{trans('media.comingSoon')}}</strong></div>
+    </div>
     </div>
 </div>
+
+<script type="text/javascript">
+window.onload = function(){
+	  auto_boxs()
+	};
+window.onresize = function(){
+	  auto_boxs()
+	};
+	function auto_boxs()
+	{
+        $('.scroller').css ('width',document.documentElement.clientWidth -76 +"px");
+        $('.ewm_img').css ('paddingTop',document.documentElement.clientHeight / 2 - document.getElementById('ewm').offsetHeight / 2 +"px");
+		$('.pheight').css ('height',document.documentElement.clientHeight -50 +"px");
+        $('.text_fn').css ('paddingTop',document.documentElement.clientHeight / 2 - document.getElementById('txt').offsetHeight / 2 +"px");
+	}
+	auto_boxs();
+</script>
 @endsection
