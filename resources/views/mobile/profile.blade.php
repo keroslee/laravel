@@ -38,21 +38,17 @@ $(function(){
 </div>
 
 <div class="toF">
-    <div id="to1" class="clearfix" style="height:1200px;">
-      <div class="bk_bg2"></div>
-      <img src="{{$profiles->get('practice')->path}}" style="width:100%"/>
+    <div id="to1" class="clearfix">
+      <div class="section" style="background-image: url({{$profiles->get('practice')->path}});"></div>
     </div>
-    <div id="to2" class="clearfix" style="height:1200px;">
-    <div class="bk_bg2"></div>
-      <img src="{{$profiles->get('people')->path}}" style="width:100%"/>
+    <div id="to2" class="clearfix">
+    <div class="section" style="background-image: url({{$profiles->get('people')->path}});"></div>
     </div>
-    <div id="to3" class="clearfix" style="height:1200px;">
-    <div class="bk_bg2"></div>
-      <img src="{{$profiles->get('manifesto')->path}}" style="width:100%"/>
+    <div id="to3" class="clearfix">
+    <div class="section" style="background-image: url({{$profiles->get('manifesto')->path}});"></div>
     </div>
-    <div id="to4" class="clearfix" style="height:1200px;">
-    <div class="bk_bg2"></div>
-      <img src="{{$profiles->get('contact')->path}}" style="width:100%"/>
+    <div id="to4" class="clearfix">
+    <div class="section" style="background-image: url({{$profiles->get('contact')->path}});"></div>
     </div>
 </div>
 
@@ -70,11 +66,20 @@ $(function(){
         }
         if ((document.documentElement) && (document.documentElement.clientWidth))
             {winWidth = document.documentElement.clientWidth;}
+
+		if (window.innerHeight){
+            winHeight = window.innerHeight;
+        } else {
+            if ((document.body) && (document.body.clientHeight))
+                winHeight = document.body.clientHeight;
+        }
+        if ((document.documentElement) && (document.documentElement.clientHeight))
+            {winHeight = document.documentElement.clientHeight;}
+
         $('.L_menu .bar').css ("width",winWidth);
         $('.L_menu .bar').css ("left",-winWidth);
-		
-
-    }
+		$('.section').css ("height",winHeight);
+	}
     autodivsize();
 </script>
 @endsection
