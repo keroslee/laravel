@@ -29,6 +29,7 @@ window.onresize = function(){
   <div class="pic_list clearfix">
     <ul class="sortable">
 	@foreach($homes as $home)
+	  @if($loop->index<8)
       <li>
         <div class="mar_ls">
           <div class="bor_white">
@@ -47,6 +48,7 @@ window.onresize = function(){
           </div>
         </div>
       </li>
+	  @endif
 	@endforeach
   	</ul>
   </div>

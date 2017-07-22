@@ -48,7 +48,7 @@ $(function(){
 <div class="wrapper">
   <div class="scroller">
     <ul class="clearfix five_list">
-      <li class="{{$tagCur?'':'cur'}}"><a href="/works">全部</a></li>
+      <li class="{{$tagCur?'':'cur'}}"><a href="/works">{{$loc=='cn'?'全部':'All'}}</a></li>
 	  @foreach($tags as $tag)
       <li class="{{$tag->id==$tagCur?'cur':''}}"><a href="/works/{{$tag->id}}">{{$tag[$loc]}}</a></li>
 	  @endforeach
