@@ -41,7 +41,7 @@ Route::group(['prefix' => 'admin', 'middleware'=>['auth','locale']], function(){
 	Route::get('/home_edit/{id}', 'HomeController@edit');
 	Route::post('/home_edit/store', 'HomeController@store');
 
-	Route::get('/profile/{lan?}', 'ProfileController@index');
+	Route::get('/profile/{lan?}/{mobile?}', 'ProfileController@index');
 	Route::post('/profile/store', 'ProfileController@store');
 
 	Route::get('/works/{tag?}', 'WorkController@index');
@@ -56,7 +56,7 @@ Route::group(['prefix' => 'admin', 'middleware'=>['auth','locale']], function(){
 	Route::post('/events/store', 'EventController@store');
 	Route::post('/events/del', 'EventController@del');
 
-	Route::get('/jobs/{loc?}', 'JobController@index');
+	Route::get('/jobs/{loc?}/{mobile?}', 'JobController@index');
 	Route::post('/jobs/store', 'JobController@store');
 	Route::post('/jobs/del', 'JobController@del');
 });

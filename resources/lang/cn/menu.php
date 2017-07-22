@@ -10,6 +10,9 @@ return [
 	'events'=>'事件',
 	'jobs'=>'求职',
 
+	//works
+	'all'=>'全部',
+
 	//profile
 	'practice'=>'事务所',
 	'people'=>'人物',

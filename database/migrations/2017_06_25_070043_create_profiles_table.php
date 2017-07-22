@@ -18,6 +18,7 @@ class CreateProfilesTable extends Migration
 			$table->string('type');
 			$table->string('lan');
 			$table->string('path');
+			$table->string('path_mobile');
             $table->timestamps();
         });
     }

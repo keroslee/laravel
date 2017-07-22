@@ -16,6 +16,7 @@ class CreateHomesTable extends Migration
         Schema::create('homes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('path');
+            $table->string('path_mobile');
             $table->string('name_cn');
 			$table->string('desc_cn');
 			$table->string('addr_cn');

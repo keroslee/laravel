@@ -25,7 +25,7 @@ $(document).ready(function(){
 	<a data-menuanchor="page1" class="active" id="totop" href="#page1">第一屏【作返回顶部】</a>
 </div>
 <div id="fullpage" class="allmian">
-  <div class="section" style="background-image: url({{$homes->get(0)->path}});">
+  <div class="section" style="background-image: url({{$homes->get(0)->path_mobile}});">
     <div class="pp_title">
       <i class="sp1" rel="-235,0,0,0"><div class="top_Atah top_Atah_p1" style="display:none;"><span>ATAH</span></div></i>
     </div>
@@ -45,7 +45,7 @@ $(document).ready(function(){
       <div class="dn_lding" style="display:none;"><a data-menuanchor="page2" id="totop" href="#page2"><img src="/images/down_landing.png" /></a></div>
     </div>
   </div>
-  <div class="section" style="background-image: url({{$homes->get(1)->path}});">
+  <div class="section" style="background-image: url({{$homes->get(1)->path_mobile}});">
     <div class="pp_cont box_cont2">
       <div class="tx_rt to_one">
         <div class="pos_rel ts2a ts_l" rel="-750,0,0,0">
@@ -62,7 +62,7 @@ $(document).ready(function(){
       <div class="dn_lding"><a data-menuanchor="page3" id="totop" href="#page3"><img src="/images/down_landing.png" /></a></div>
     </div>
   </div>
-  <div class="section" style="background-image: url({{$homes->get(2)->path}});">
+  <div class="section" style="background-image: url({{$homes->get(2)->path_mobile}});">
     <div class="pp_title">
       <i class="sp3" rel="235,0,0,0"><div class="top_Logo top_Logo_p1"><span><img src="/images/top_logo.png"></span></div></i>
     </div>
@@ -82,7 +82,7 @@ $(document).ready(function(){
       <div class="dn_lding"><a data-menuanchor="page4" id="totop" href="#page4"><img src="/images/down_landing.png" /></a></div>
     </div>
   </div>
-  <div class="section" style="background-image: url({{$homes->get(3)->path}});">
+  <div class="section" style="background-image: url({{$homes->get(3)->path_mobile}});">
     <div class="pp_cont box_cont2">
       <div class="tx_rt to_one">
         <div class="pos_rel ts4a ts_l" rel="-750,0,0,0">
@@ -99,7 +99,7 @@ $(document).ready(function(){
       <div class="dn_lding"><a data-menuanchor="page5" id="totop" href="#page5"><img src="/images/down_landing.png" /></a></div>
     </div>
   </div>
-  <div class="section" style="background-image: url({{$homes->get(4)->path}});">
+  <div class="section" style="background-image: url({{$homes->get(4)->path_mobile}});">
     <div class="pp_cont box_cont1">
       <div class="tx_lt to_one">
         <div class="pos_rel ts5a ts_r" rel="750,0,0,0">
@@ -116,7 +116,7 @@ $(document).ready(function(){
       <div class="dn_lding"><a data-menuanchor="page6" id="totop" href="#page6"><img src="/images/down_landing.png" /></a></div>
     </div>
   </div>
-  <div class="section" style="background-image: url({{$homes->get(5)->path}});">
+  <div class="section" style="background-image: url({{$homes->get(5)->path_mobile}});">
     <div class="pp_cont box_cont2">
       <div class="tx_rt to_one">
         <div class="pos_rel ts6a ts_l" rel="-750,0,0,0">
@@ -133,7 +133,7 @@ $(document).ready(function(){
       <div class="dn_lding"><a data-menuanchor="page7" id="totop" href="#page7"><img src="/images/down_landing.png" /></a></div>
     </div>
   </div>
-  <div class="section" style="background-image: url({{$homes->get(6)->path}});">
+  <div class="section" style="background-image: url({{$homes->get(6)->path_mobile}});">
     <div class="pp_cont box_cont1">
       <div class="tx_lt to_one">
         <div class="pos_rel ts7a ts_r" rel="750,0,0,0">
@@ -150,7 +150,7 @@ $(document).ready(function(){
       <div class="dn_lding"><a data-menuanchor="page8" id="totop" href="#page8"><img src="/images/down_landing.png" /></a></div>
     </div>
   </div>
-  <div class="section" style="background-image: url({{$homes->get(7)->path}});">
+  <div class="section" style="background-image: url({{$homes->get(7)->path_mobile}});">
     <div class="pp_cont box_cont2">
       <div class="tx_rt to_one">
         <div class="pos_rel ts8a ts_l" rel="-750,0,0,0">

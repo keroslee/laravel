@@ -11,20 +11,30 @@ class JobController extends Controller
     public function show()
     {
 		$loc=config('app.locale');
-		$job = Job::find($loc=='cn'?1:2);
+		
+		if($this->isMobile()){
+			$job = Job::find($loc=='cn'?3:4);
+		}else{
+			$job = Job::find($loc=='cn'?1:2);
+		}
+
 		$view = $this->isMobile()?'mobile.jobs':'jobs';
-        return view($view, ['job'=>$job]);
+		return view($view, ['job'=>$job]);
     }
 
-	public function index($loc='cn')
+	public function index($loc='cn',$mobile=null)
     {
-		$job = Job::find($loc=='cn'?1:2);
-        return view('admin.jobs',['loc'=>$loc, 'job'=>$job]);
+		if($mobile){
+			$job = Job::find($loc=='cn'?3:4);
+		}else{
+			$job = Job::find($loc=='cn'?1:2);
+		}
+        return view('admin.jobs',['loc'=>$loc, 'job'=>$job, 'mobile'=>$mobile]);
     }
 
 	public function store(Request $request)
 	{
-		$job=Job::find($request->loc=='cn'?1:2);
+		$job=Job::find($request->id);
 		if(!$job)
 			$job=new Job();
 		if($request->hasFile('fileField')){

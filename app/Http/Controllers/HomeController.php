@@ -16,7 +16,8 @@ class HomeController extends Controller
     public function show()
     {
 		$loc = config('app.locale');
-		$homes = Home::select('id','path','name_'.$loc.' as name','desc_'.$loc.' as desc','addr_'.$loc.' as addr','target')->get();
+		$path = $this->isMobile()?'path_mobile':'path';
+		$homes = Home::select('id',$path,'name_'.$loc.' as name','desc_'.$loc.' as desc','addr_'.$loc.' as addr','target')->get();
 		
 		$view = $this->isMobile()?'mobile.index':'index';
         return view($view, ['homes'=>$homes]);
@@ -38,6 +39,7 @@ class HomeController extends Controller
     {
 		$this->validate($request, [
 			'fileField' => 'image|max:1000|mimes:jpeg,png,gif,svg|dimensions:max_width=1920,max_height=1080',
+			'fileField-mobile' => 'image|max:500|mimes:jpeg,png,gif,svg|dimensions:max_width=900,max_height=1200',
 			'name_cn' => 'required|max:255',
 			'desc_cn' => 'required|max:255',
 			'addr_cn' => 'required|max:255',
@@ -49,7 +51,7 @@ class HomeController extends Controller
 		$home = Home::find($request->id);
 
 		if($request->hasFile('fileField')){
-			if($home){
+			if($home && $home->path){
 				$path = substr($home->path, 8);
 				Storage::delete('/public'.$path);
 			}
@@ -59,10 +61,22 @@ class HomeController extends Controller
 			$path = '/storage'.substr($path, 6);
 		}
 
+		if($request->hasFile('fileField-mobile')){
+			if($home && $home->path_mobile){
+				$pathMobile = substr($home->path_mobile, 8);
+				Storage::delete('/public'.$pathMobile);
+			}
+
+			$fileName = 'index_bg'.$request->id.'-mobile.'.$request->file('fileField-mobile')->extension();
+			$pathMobile = $request->file('fileField-mobile')->storeAs('public/home_img', $fileName);
+			$pathMobile = '/storage'.substr($pathMobile, 6);
+		}
+
 		if(!$home)
 			$home=new Home();
 		
 		$home->path=isset($path)?$path:$home->path;
+		$home->path_mobile=isset($pathMobile)?$pathMobile:$home->path_mobile;
 		$home->name_cn=$request->name_cn;
 		$home->desc_cn=$request->desc_cn;
 		$home->addr_cn=$request->addr_cn;

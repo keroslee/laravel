@@ -41,11 +41,13 @@ window.onload = function(){
         {
           var MAXWIDTH  = 512; 
           var MAXHEIGHT = 288;
-          var div = document.getElementById('preview');
-          if (file.files && file.files[0])
+		  document.getElementById($(file).data('txt')).value=file.value;
+		  var div = document.getElementById($(file).data('preview'));
+		  
+		  if (file.files && file.files[0])
           {
               div.innerHTML ='<img id=imghead>';
-              var img = document.getElementById('imghead');
+              var img = div.childNodes[0];
               img.onload = function(){
                 var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
                 img.width  =  rect.width;
@@ -113,15 +115,30 @@ window.onload = function(){
 			<img id="imghead" src='{{$home->path}}'>
 		</div>
 		<div class="uplond">
-			<input type="text" id="uptext" value="请上传图片：1920x1080px；大小200k以内"  name="textfield" />
+			<input type="text" id="uptext" value="请上传图片：1920x1080px；大小400k以内"  name="textfield" />
 			<button type="button">浏览</button>
-			<input type="file" name="fileField" class="file" id="fileField"  onchange="previewImage(this),document.getElementById('uptext').value=this.value" />
+			<input type="file" name="fileField" class="file" id="fileField" data-preview="preview" data-txt="uptext" onchange="previewImage(this)" />
 			@if ($errors->has('fileField'))
 				<span class="help-block">
 					<strong>{{ $errors->first('fileField') }}</strong>
 				</span>
 			@endif
 		</div>
+
+		<div class="p_img" id="preview-mobile">
+			<img id="imghead" src='{{$home->path_mobile}}'>
+		</div>
+		<div class="uplond">
+			<input type="text" id="uptext-mobile" value="请上传移动端图片：900x1200px；大小200k以内"  name="textfield" />
+			<button type="button">浏览</button>
+			<input type="file" name="fileField-mobile" class="file" id="fileField" data-preview="preview-mobile" data-txt="uptext-mobile" onchange="previewImage(this)" />
+			@if ($errors->has('fileField-mobile'))
+				<span class="help-block">
+					<strong>{{ $errors->first('fileField-mobile') }}</strong>
+				</span>
+			@endif
+		</div>
+
 		<div>
 		请输入15字内的项目名称-大字
 			<input type="text" name="name_cn" id="bigtext_cn" hint="请输入15字内的项目名称-大字" value="{{$home->name_cn}}"/>

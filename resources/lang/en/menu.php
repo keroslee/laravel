@@ -9,6 +9,9 @@ return [
 	'media'=>'MEDIA',
 	'events'=>'EVENTS',
 	'jobs'=>'JOBS',
+	
+	//works
+	'all'=>'All',
 
 	//profile
 	'practice'=>'Practice',

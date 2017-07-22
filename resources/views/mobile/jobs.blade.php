@@ -16,7 +16,7 @@
 @include('partial.nav-m', ['home'=>'', 'profile'=>'', 'works'=>'', 'media'=>'', 'events'=>'', 'jobs'=>'act'])
 
 <div class="toF">
-    <div class="clearfix" style="background:#F90">
+    <div class="clearfix">
       <div class="dl_img">
 		<img src="{{$job->path}}"/>
 	  </div>
