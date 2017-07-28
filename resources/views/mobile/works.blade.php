@@ -61,9 +61,21 @@ window.onload = function(){
 <div class="wrapper wrap2" id="wrapper02">
   <div class="scroller ten_list">
     <ul class="clearfix">
-      <li ><a href="/works">全部</a></li>
+      <li ><a href="/works">{{trans('menu.all')}}</a></li>
 	  @foreach($tags as $tag)
-	  <li class="{{strlen($tag[$loc])>4?'bb':''}}"><a href="/works/{{$tag->id}}">{{$tag[$loc]}}</a></li>
+		@if($loc=='cn')
+		  @if(strlen($tag[$loc]) < 7)
+		  <li><a href="/works/{{$tag->id}}">{{$tag[$loc]}}</a></li>
+		  @else
+		  <li style="width:{{strlen($tag[$loc])*0.4}}em !important;white-space: nowrap;"><a href="/works/{{$tag->id}}">{{$tag[$loc]}}</a></li>
+		  @endif
+		@else
+		  @if(strlen($tag[$loc]) < 3)
+		  <li><a href="/works/{{$tag->id}}">{{$tag[$loc]}}</a></li>
+		  @else
+		  <li style="width:{{strlen($tag[$loc])*0.55}}em !important;white-space: nowrap;"><a href="/works/{{$tag->id}}">{{$tag[$loc]}}</a></li>
+		  @endif
+		 @endif
 	  @endforeach
     </ul>
   </div>
