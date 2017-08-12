@@ -1,0 +1,132 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0px;padding:0px;}
+body,html{padding:0;margin:0; font-size:14px; font-family:"微软雅黑",Arial, Helvetica, sans-serif;margin:0 auto;height:100%; }
+
+ol,ul,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,u,a,i{ margin:0; padding:0; list-style:none; text-decoration:none;}
+img{ border:0;}
+a:hover, a:focus{color:#fff; background:76d4b2 !important;  text-decoration:none;}
+
+/*菜单*/
+.contain{ position:relative; min-height:100%;}
+.head{ height:30px; line-height:30px; font-size:12px;}
+/*.headtit{ padding-left:30px;}
+.headtit span{ float:left;}*/
+.exit{ padding-right:30px; float:right;}
+.exit a{color:#000;}
+.nav{ background:#1fb5ac; height:40px; color:#fff; padding-left:25px;}
+.nav h4{ font-size:16px; line-height:40px; float:left; }
+.nav ul{ line-height:40px; float:right; padding-right:100px;}
+.nav ul li{ float:left;}
+.nav ul li a{ float:left; padding:0 40px;}
+.nav a{color:#fff;}
+.nav a:hover{color:#fff; background:#199a92; background-size:100px;}
+.btn{color:#fff; background:#1fb5ac;}
+.btn-mouseover{ background:green;}
+.btn:hover{ color:#fff;}
+.inp{ border-right:1px  solid #32323c;}
+.btn-del{ background:#bcbcbc;}
+.bj{ border:0; background:0;}
+.centent h4{ padding-bottom:10px;}
+
+.sidebar{
+	background: #32323c;
+	height: 100%;
+	min-width: 200px;
+	position: absolute;
+	overflow: hidden;
+	left: 0px;
+}
+.sidebar ul{ text-align:center; text-align:-webkit-center;}
+.sidebar h4,ul,li{color:#fff;}
+.sidebar li .parent{color:#fff; border-bottom:1px solid #585858; padding:0 10px; line-height:38px; display:block; cursor:pointer; text-align:center; background:#1fb5ac;}
+.sidebar li .parent1{color:#fff; border-bottom:1px solid #585858; padding:0 10px; line-height:38px; display:block; cursor:pointer; text-align:center; background:#1fb5ac;}
+.sidebar li ul{ position:relative; left:auto; top:auto; width:auto; visibility:visible; overflow:hidden; background:#32323c;}
+.sidebar li ul li{padding:5px 0;  }
+.sidebar li ul li a{ color:#fff;}
+.sidebar li ul li a:hover{ color:#1fb5ac;}
+
+.box{ padding-left:200px; display:block; overflow:hidden;}
+.box ul{ display:block; overflow:hidden;}
+.box ul li{color:#000; float:left; padding:0;}
+
+form>input{
+    border:0;
+    width: 200px;　　　　　　 
+    outline: none;　　　　　　
+	line-height:36px;
+	height:36px;
+}
+.item-nav button{ 
+	width:100%;
+	border:0;
+	border-radius:0;
+	height:36px;
+	}
+.open:after{
+	font-family: FontAwesome;
+	content: "\f107" !important;
+	float: right;
+	margin-right: 8px;
+	}
+.parent:after {
+	font-family: FontAwesome;
+	content: "\f105";
+	float: right;
+	margin-right: 8px;
+}
+.breadcrumb > li + li:before {
+    color: #CCCCCC;
+    content: "/ ";
+    padding: 0 5px;
+}
+
+/*设备运行情况*/
+.centent{ padding-left:20px; padding-right:20px; overflow:hidden;}
+.centent h3{ padding-bottom:20px;}
+.situation{ display:block; text-align:center; }
+.top{  margin:0 20px; width:800px;}
+.top span{ line-height:40px; padding:0 20px; color:#fff; margin:0 auto;}
+.left{ float:left;}
+/*.right{  position:absolute; top:400px; left:880px; }*/
+
+.form-inline{ padding-bottom:20px;}
+
+div#div1{ 
+position:fixed; 
+top:0; 
+left:0; 
+bottom:0; 
+right:0; 
+z-index:-1; 
+} 
+div#div1 > img { 
+height:100%; 
+width:100%; 
+border:0; 
+} 
+
+/*.tit{ background:url(/img/bg.jpg) no-repeat 100% 100%;}*/
+.tit ul{ text-align:center; padding-left:20px;}
+.tit ul li{width:200px; height:60px; float:left; padding:0; margin:0 20px; color:#fff; line-height:60px;  border-radius:5px; border:1px solid green;}
+.tit ul a{}
+
+.nav1{ background:#1fb5ac; height:40px; margin-bottom:20px;}
+.nav1 a{ color:#fff; line-height:40px;padding:40px;}
+.nav1 a:hover{ color:#fff; background:#199a92; padding:40px;}
+.history{ margin-top:60px;}
+.history a{ color:#000;line-height:24px;}
+.history a:hover{ color:#000;}
+.search-btn{color:#fff; background:#1fb5ac;}
+
+/*default*/
+.pagination{float:right; margin:0 ;} 
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{ vertical-align:middle;}
+
+.username{ padding-left:80px;}
+.adm{ float:left;margin-left:20px; display:block; overflow:hidden; width:200px; margin-bottom:20px; }
+.adm label{ }
+span{float:left;}
+.save{ margin-left:20px;}
+.checkbox-inline+.checkbox-inline, .radio-inline+.radio-inline{ margin-left:0px;}
