@@ -1,15 +1,6 @@
 <div class="sidebar">
     <div class="item-nav">
         <ul>
-            <li>
-                <?php $userType = ['', '超级管理员', '管理员', '企业用户'];?>
-                <p style="text-align:center; margin-top:10px; font-size:12px;
-">
-                    您好：{{ Auth::user()->name }}
-                    <br/>
-                    {{$userType[$type]}}
-                </p>
-            </li>
 
             <!--<li style="display:none">
                 <form>
@@ -32,7 +23,7 @@
                         <a class="parent inactive">{{$areaBigList[$key]}}</a>
                         @foreach($areaB as $area)
                             <ul style="display:none">
-                                <li><a href="/company?area={{$area->tid}}">{{$area->area}}</a></li>
+                                <li><a href="{{Request::is('/')?"/?area=$area->tid":"/company?area=$area->tid"}}">{{$area->area}}</a></li>
                             </ul>
                         @endforeach
                     </li>
@@ -55,8 +46,17 @@
                 </ul>
             </li>
             @endif
-           
+
+            <li>
+                <?php $userType = ['', '超级管理员', '管理员', '企业用户'];?>
+                <p style="text-align:center; margin: 10px 40px; font-size:12px;color: #fff;position:absolute;bottom:5em;">
+                    您好：{{ Auth::user()->name }}
+                    <br/>
+                    {{$userType[$type]}}
+                </p>
+            </li>
         </ul>
     </div>
+
 </div>
 

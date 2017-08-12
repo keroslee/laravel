@@ -41,22 +41,16 @@ class Home extends Controller
 
     private function status($myCompanies)
     {
-        Log::info($myCompanies);
         $stationsBase = DB::table('T_BASE_TERMINAL t')
             ->leftJoin('T_BASE_COMPANY c', 'c.tid', '=', 't.companytid')
             ->whereIn('c.companyname', $myCompanies)
             ->get();
-        Log::info($stationsBase);
 
         $myStations = DB::table('T_DATA_TERMINAL as d')
-            /*->join('T_BASE_TERMINAL as b', function ($join) {
-                $join->on('d.pcompany', '=', 'b.companytid')
-                    ->on('d.stationname', '=', 'b.terminalname');
-            })*/
             ->whereIn('d.pcompany', $myCompanies)
             ->where('d.realtime','>',date('YmdHis', floor(time() / 300) * 300-300))
             ->get();
-Log::info($myStations);
+
         $stations = [];
         foreach ($myStations as $myStation) {
             foreach ($stationsBase as $stationBase) {
@@ -73,10 +67,7 @@ Log::info($myStations);
         }
         
         $runningCompanies = [];
-        $goodCompanies = [];
-        $badCompanies = [];
         $companies = [];
-
         foreach ($stations as $station) {
             if (!in_array($station['pcompany'], $companies)) {
                 $companies[] = $station['pcompany'];
@@ -87,32 +78,6 @@ Log::info($myStations);
                 && !in_array($station['pcompany'], $runningCompanies)
             ) {
                 $runningCompanies[] = $station['pcompany'];
-            }
-
-           /* if ($station['type'] == 0
-                && $station['state'] == 1
-            ) {
-                foreach ($stations as $station2) {
-                    if ($station2['pcompany'] != $station['pcompany'] || $station2['type'] == 0) {
-                        continue;
-                    }
-                    if ($station2['state'] == 0) {
-                        $key = array_search($station2['pcompany'],$goodCompanies);
-                        if($key!==false){
-                            unset($goodCompanies[$key]);
-                        }
-                        break;
-                    } else if ($station2['state'] == 1) {
-                        $goodCompanies[] = $station2['pcompany'];
-                    }
-                }
-            }*/
-
-            if ($station['type'] == 0
-                && $station['state'] != 1
-                && !in_array($station['pcompany'], $badCompanies)
-            ) {
-                $badCompanies[] = $station['pcompany'];
             }
         }
 

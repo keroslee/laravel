@@ -11,16 +11,17 @@
 </head><body>
 <div class="contain">
   <div class="nav">
-    <h4>环保辅助管理系统</h4>
+    <h4>
+        <img src="/img/logo.png" height="30em">&nbsp;环保辅助管理系统</h4>
     <ul>
       @if(isset($type) && $type!=1)
-      <li class="aaa" style="background:#199a92;"><a href="/"><img src="/img/hz.png" width="20px" ;/>&nbsp;首页</a></li>
+      <li class="aaa" style="{{Request::is('/')?'background:#199a92;':''}}"><a href="/"><img src="/img/hz.png" width="20px" ;/>&nbsp;首页</a></li>
       @endif
       @if(isset($type) && $type==2)
-      <li class="aaa"><a href="/info_company"><img src="/img/cx.png" width="22px" ;/>&nbsp;企业信息查询</a></li>
-      <li class="aaa"><a href="/company_summary"><img src="/img/cx.png" width="22px" ;/>&nbsp;历史数据查询</a></li>
-      <li class="aaa"><a href="/area_summary"><img src="/img/cx.png" width="22px" ;/>&nbsp;管理分析</a></li>
-      <li class="aaa"><a href="/admin/area"><img src="/img/cx.png" width="22px" ;/>&nbsp;后台管理</a></li>
+      <li class="aaa" style="{{Request::is('info_company')?'background:#199a92;':''}}"><a href="/info_company"><img src="/img/cx.png" width="22px" ;/>&nbsp;企业信息查询</a></li>
+      <li class="aaa" style="{{Request::is('company_summary')?'background:#199a92;':''}}"><a href="/company_summary"><img src="/img/cx.png" width="22px" ;/>&nbsp;历史数据查询</a></li>
+      <li class="aaa" style="{{Request::is('area_summary')?'background:#199a92;':''}}"><a href="/area_summary"><img src="/img/cx.png" width="22px" ;/>&nbsp;管理分析</a></li>
+      <li class="aaa" style="{{Request::is('admin/area')?'background:#199a92;':''}}"><a href="/admin/area"><img src="/img/cx.png" width="22px" ;/>&nbsp;后台管理</a></li>
       @endif
       <li class="aaa"><a href="{{ url('/logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"> <img src="/img/end.png" width="24px" ;/>&nbsp;退出 </a>
         <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">

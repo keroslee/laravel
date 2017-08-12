@@ -71,10 +71,13 @@ class Controller extends BaseController
     protected function getMyCompanies(Request $request)
     {
         $userId = $request->user()->id;
+        $where = [['rights.userid', $userId]];
+        if($areaId = $request->area) {
+            $where[] = ['T_BASE_COMPANY.parea',$areaId];
+        }
         $myCompanies = DB::table('rights')
             ->leftJoin('T_BASE_COMPANY', 'T_BASE_COMPANY.TID', '=', 'rights.companytid')
-            ->where('rights.userid', $userId)
-//            ->get();
+            ->where($where)
             ->pluck('T_BASE_COMPANY.companyname');
         return $myCompanies;
     }
