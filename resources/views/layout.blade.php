@@ -7,8 +7,10 @@
 <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="/css/style.css">
+@yield('style')
 <script language="javascript" type="text/javascript" src="/js/WdatePicker.js"></script>
-</head><body>
+</head>
+<body>
 <div class="contain">
   <div class="nav">
     <h4>

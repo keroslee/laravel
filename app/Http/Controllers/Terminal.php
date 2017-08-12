@@ -31,6 +31,7 @@ class Terminal extends Controller
         return view('terminal', [
             'terminals' => $status['terminals'],
             'status' => $status['status'],
+            'stations' => $status['stations'],
             'companyTid' => $tid,
             'userData' => ['type' => $this->getType($request), 'companiesSameArea' => $companies], 'companyName' => $companyName,
             'currentUrl' => $request->url()]);
@@ -65,28 +66,32 @@ class Terminal extends Controller
 
             $terminals = new Collection($terminals);
 
-            $status = [
-                'time' => 0
-            ];
-            foreach ($terminals as $terminal) {
-                if ($terminal->type == 0 && $terminal->state == 1) {
-                    foreach ($terminals as $terminal2) {
-                        if ($terminal2->state == 1) {
-                            $status['state'] = true;
-                        } else {
-                            $status['state'] = false;
-                            break;
-                        }
-                    }
-                }
-                $status['time'] = max($status['time'], strtotime($terminal->realtime));
+            $company = DB::table('T_BASE_COMPANY')->where('tid',$tid)->first();
+            $data = DB::table('T_DATA_COMPANY')
+                ->where([
+                    ['companyname',$company->companyname],
+                    ['realtime','>',date('YmdHis', floor(time() / 300) * 300-300)]
+                ])
+                ->first();
+            if($data) {
+                $status['state'] = $data->result > 0;
+                $status['time'] = date_format(date_create($data->realtime), 'Y年m月d日 H时i分s秒');
+            }else{
+                $status = ['state' => false, 'time' => 0];
             }
-            $status['state'] = isset($status['state']) && $status['state'];
-            $status['time'] = date('Y年m月d日 H时i分s秒', $status['time']);
         } else {
             $terminals = new Collection([]);
             $status = ['state' => false, 'time' => 0];
         }
-        return ['terminals' => $terminals, 'status' => $status];
+
+        $stationsResult = DB::table('T_BASE_STATION')->where('companytid', $tid)->get();
+        $stations = [];
+        foreach($stationsResult as $station){
+            $stations[$station->stationname] = explode(',',$station->zlsbs);
+        }
+        return [
+            'terminals' => $terminals,
+            'status' => $status,
+            'stations' =>$stations];
     }
 }
