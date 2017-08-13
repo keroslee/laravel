@@ -5,6 +5,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use DB;
+use Excel;
+use Ramsey\Uuid\Uuid;
 use Log;
 
 class Company extends Controller
@@ -155,5 +157,29 @@ LEFT JOIN (SELECT * FROM RIGHTS r LEFT JOIN USERS u ON r.userid=u.id WHERE u.typ
 //        }
 
         return response()->json($json);
+    }
+
+    public function import(Request $request)
+    {
+        if($request->hasFile('file')){
+            $path = $request->file('file')->getRealPath();
+            $data = Excel::load($path, function($reader) {})->get();
+
+            if(!empty($data) && $data->count()){
+                foreach ($data->toArray() as $key => $value) {
+                    if(!empty($value)){
+                        foreach ($value as $v) {
+                            $v['tid'] = Uuid::uuid4()->toString();
+                            $insertData[] = $v;
+                        }
+                    }
+                }
+                if(!empty($insertData)){
+                    $result = DB::table('t_base_company')->insert($insertData);
+                    return $result?'success':'fail';
+                }
+            }
+        }
+        return 'fail';
     }
 }

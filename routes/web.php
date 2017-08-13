@@ -41,6 +41,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/admin/company/del', 'Admin\Company@del');
     Route::post('/admin/company/upd', 'Admin\Company@upd');
     Route::post('/admin/upload', 'Controller@upload');
+    Route::post('/admin/company/import', 'Admin\Company@import');
 
     Route::match(['get', 'post'], '/admin/approval', 'Admin\Approval@index');
     Route::post('/admin/approval/add', 'Admin\Approval@add');

@@ -27,6 +27,12 @@
                 <button type="submit" class="btn ">查询</button>
                 <button type="button" class="btn " id="add" data-toggle="modal" data-target="#modalEdit">增加</button>
                 <button type="button" class="btn btn-del" id="del">删除</button>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">导入</label>
+                    <div class="col-sm-6">
+                        <input id="import" name="import" type="file" class="form-horizontal" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />
+                    </div>
+                </div>
             </form>
             @endif
             @include('admin.message')
@@ -451,6 +457,32 @@
                 contentType: false
             }).done(function (res) {
                 $('#gongYiTu').val(res['path'])
+            }).fail(function (res) {
+                console.log(res);
+            });
+        });
+
+        $('#import').click(function () {
+            $('#import').val(null);
+        })
+        $('#import').change(function () {
+            var formData = new FormData();
+            formData.append('file', $('#import')[0].files[0]);
+            formData.append('_token', '{{csrf_token()}}');
+            formData.append('companyTid', $('#tid').val());
+            $.ajax({
+                url: '/admin/company/import',
+                type: 'POST',
+                cache: false,
+                data: formData,
+                processData: false,
+                contentType: false
+            }).done(function (res) {
+                if(res == 'success'){
+                    success('导入成功！');
+                }else{
+                    success('保存成功！');
+                }
             }).fail(function (res) {
                 console.log(res);
             });

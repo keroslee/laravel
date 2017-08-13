@@ -176,9 +176,10 @@ return [
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
-	App\Providers\RouteServiceProvider::class,
-	//laravel-oci8
-	Yajra\Oci8\Oci8ServiceProvider::class,
+        App\Providers\RouteServiceProvider::class,
+        //laravel-oci8
+        Yajra\Oci8\Oci8ServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
     ],
 
     /*
@@ -226,7 +227,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];
