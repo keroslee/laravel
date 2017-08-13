@@ -49,7 +49,7 @@
                                                 {{$terminal->stationname}}：
                                             </td>
                                             <td>
-                                                <strong id="status{{$terminal->tid}}" style="background:#{{$terminal->state>0 ? '56bd0c' : 'ff7373'}};">
+                                                <strong id="status{{$terminal->tid}}" style="background:{{$terminal->state>0 ? '#56bd0c' : '#ff7373'}};">
                                                     {{$terminal->state>0 ? $terminal->state : '未运行'}}
                                                 </strong>
                                             </td>
@@ -61,7 +61,7 @@
                                                         &nbsp;&nbsp;&nbsp;&nbsp;{{$terminalZhili->stationname}}：
                                                     </td>
                                                     <td>
-                                                        <strong id="status{{$terminalZhili->tid}}" style="background:#{{$terminalZhili->state>0 ? '56bd0c' : 'ff7373'}};">
+                                                        <strong id="status{{$terminalZhili->tid}}" style="background:{{$terminalZhili->state>0 ? '#56bd0c' : '#ff7373'}};">
                                                             {{$terminalZhili->state>0 ? $terminalZhili->state : '未运行'}}
                                                         </strong>
                                                     </td>
@@ -119,7 +119,7 @@
                             cell.innerHTML = terminalName + '：'
                             cell.className = 'text-left';
                             var cell = row.insertCell();
-                            cell.innerHTML = '<strong style="background:#' + (terminal['state']=='1'?'56bd0c':'ff7373') + ';">'+(terminal['state'] == '1' ? '运行中' : '未运行')+'</strong>';
+                            cell.innerHTML = '<strong style="background:#' + (terminal['state']=='1'?'56bd0c':'ff7373') + ';">'+(terminal['state'] > 0 ? terminal['state'] : '未运行')+'</strong>';
 
                             for (var tidZhili in terminals) {
                                 var terminal = terminals[tidZhili];
@@ -129,7 +129,7 @@
                                     cell.innerHTML = '&nbsp;&nbsp;&nbsp;&nbsp;' + terminal['stationname'] + '：'
                                     cell.className = 'text-left';
                                     var cell = row.insertCell();
-                                    cell.innerHTML = '<strong style="background:#' + (terminal['state'] == '1' ? '56bd0c' : 'ff7373') + ';">' + (terminal['state'] == '1' ? '运行中' : '未运行') + '</strong>';
+                                    cell.innerHTML = '<strong style="background:#' + (terminal['state'] == '1' ? '56bd0c' : 'ff7373') + ';">' + (terminal['state'] > 0 ? terminal['state'] : '未运行') + '</strong>';
 
                                 }
                             }
