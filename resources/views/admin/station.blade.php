@@ -102,7 +102,8 @@
                                     data-type="{{$result->type}}"
                                     data-zlsbs="{{$result->zlsbs}}"
                                     data-zlsbs_fz="{{$result->zlsbs_fz}}"
-                                    data-mark="{{$result->mark}}"><img src="/img/bj.png" width="20px"/>编辑
+                                    data-mark="{{$result->mark}}"
+                                    data-wrysb="{{$result->wrysb}}"><img src="/img/bj.png" width="20px"/>编辑
                             </button>
                         </td>
                     </tr>
@@ -146,6 +147,11 @@
                                     <label for="inputPassword3" class="col-sm-3 control-label">监测点名称</label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" id="stationname" placeholder="监测点名称">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-3 control-label">污染源设备</label>
+                                    <div class="col-sm-9" id="wrsbs">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -253,6 +259,7 @@
                 zlsbs: modal.find('.modal-body #zlsbs').val(),
                 zlsbs_fz: modal.find('.modal-body #zlsbs_fz').val(),
                 mark: modal.find('.modal-body #mark').val(),
+                wrysb: modal.find('.modal-body input[name=\'wrysb\']:checked').val()
             };
 
             if (data['tid']) {
@@ -402,6 +409,7 @@
                 var zlsbs = button.data('zlsbs');
                 var zlsbs_fz = button.data('zlsbs_fz');
                 var mark = button.data('mark');
+                var wrysbCode = button.data('wrysb');
 
                 modal.find('.modal-body #tid').val(tid);
                 modal.find('.modal-body #companytid').val(companytid);
@@ -412,16 +420,24 @@
                 modal.find('.modal-body #zlsbs_fz').val(zlsbs_fz);
                 modal.find('.modal-body #mark').val(mark);
 
+                var wrsbs = modal.find('.modal-body #wrsbs');
                 var zlsbs = modal.find('.modal-body #zlsbs').parent();
                 var allTerminals = ret['allTerminals'];
                 var myTerminals = ret['myTerminals'];
 
-                modal.find('.modal-body #zlsbs').parent().children('label').remove()
+                wrsbs.children('label').remove()
+                zlsbs.children('label').remove()
                 for (var index in allTerminals) {
-                    if ($.inArray(allTerminals[index]['code'], myTerminals) > -1)
-                        zlsbs.append('<label><input type="checkbox" checked value="' + allTerminals[index]['code'] + '">' + allTerminals[index]['terminalname'] + '</label>');
-                    else
-                        zlsbs.append('<label><input type="checkbox" value="' + allTerminals[index]['code'] + '">' + allTerminals[index]['terminalname'] + '</label>');
+                    var code = allTerminals[index]['code'];
+                    var name = allTerminals[index]['terminalname'];
+                    if(code == wrysbCode) {
+                        wrsbs.append('<label><input type="radio" checked name="wrysb" value="' + code + '">' + name + '</label>');
+                    }else if(allTerminals[index]['type'] == 1){
+                        if ($.inArray(code, myTerminals) > -1)
+                            zlsbs.append('<label><input type="checkbox" checked value="' + code + '">' + name + '</label>');
+                        else
+                            zlsbs.append('<label><input type="checkbox" value="' + code + '">' + name + '</label>');
+                    }
                 }
 
                 $('#modalEdit input[type=\'checkbox\']').change(function () {
@@ -448,11 +464,16 @@
             };
 
             $.post('/admin/station/terminals', data).done(function (ret) {
+                $('#modalEdit').find('.modal-body #wrsbs').children('label').remove()
                 $('#modalEdit').find('.modal-body #zlsbs').parent().children('label').remove()
+                var wrsbs = $('#modalEdit').find('.modal-body #wrsbs');
                 var zlsbs = $('#modalEdit').find('.modal-body #zlsbs').parent();
                 var allTerminals = ret['allTerminals'];
                 for (var index in allTerminals) {
-                    zlsbs.append('<label><input type="checkbox" value="' + allTerminals[index]['code'] + '">' + allTerminals[index]['terminalname'] + '</label>');
+                    if(allTerminals[index]['type'] == 0)
+                        wrsbs.append('<label><input type="radio" name="wrysb" value="' + allTerminals[index]['code'] + '">' + allTerminals[index]['terminalname'] + '</label>');
+                    else if(allTerminals[index]['type'] == 1)
+                        zlsbs.append('<label><input type="checkbox" value="' + allTerminals[index]['code'] + '">' + allTerminals[index]['terminalname'] + '</label>');
                 }
                 $('#modalEdit input[type=\'checkbox\']').change(function () {
                     console.log('change')
@@ -478,6 +499,7 @@
             modal.find('.modal-body #zlsbs').val('');
             modal.find('.modal-body #zlsbs_fz').val('');
             modal.find('.modal-body #mark').val('');
+            modal.find('.modal-body #wrsbs').children('label').remove();
             $('#modalEdit input[type=\'checkbox\']').parent().remove();
 
             modal.modal('show')

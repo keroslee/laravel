@@ -58,7 +58,6 @@ class Station extends TableBase
         $data = [];
         $allTerminals = DB::table('T_BASE_TERMINAL')
             ->where('companytid', $companyTid)
-            ->where('type', 1)
             ->get();
         $data['allTerminals'] = $allTerminals;
         if ($tid) {
