@@ -75,11 +75,23 @@ LEFT JOIN (SELECT * FROM RIGHTS r LEFT JOIN USERS u ON r.userid=u.id WHERE u.typ
             $json['err'] = '账号已存在';
             $json['res'] = false;
         } else {
+            $insertData = [
+                'name' => $userData['acc'],
+                'email' => $userData['acc'],
+                'password' => bcrypt($userData['passwd']),
+                'type' => 3
+            ];
             $insertUserResult = DB::table('USERS')
-                ->insert(['name' => $userData['acc'], 'email' => $userData['acc'], 'password' => bcrypt($userData['passwd']), 'type' => 3]);
+                ->insert($insertData);
+
             $userId = DB::table('USERS')->where('email', $userData['acc'])->value('id');
+            $insertData = [
+                ['userid' => $userId, 'companytid' => $data['tid']],
+                ['userid' => 2, 'companytid' => $data['tid']],
+            ];
             $insertRightResult = DB::table('RIGHTS')
-                ->insert(['userid' => $userId, 'companytid' => $data['tid']]);
+                ->insert($insertData);
+
             if (!$insertUserResult || !$insertRightResult) {
                 $json['err'] = '新建企业账号失败';
                 $json['res'] = false;
