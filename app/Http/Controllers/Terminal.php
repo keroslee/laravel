@@ -28,12 +28,15 @@ class Terminal extends Controller
             ->select('c.tid', 'c.companyname')
             ->get();
 
+        $userData = ['companytid' => $tid,'type' => $this->getType($request), 'companiesSameArea' => $companies];
+
         return view('terminal', [
             'terminals' => $status['terminals'],
             'status' => $status['status'],
             'stations' => $status['stations'],
             'companyTid' => $tid,
-            'userData' => ['type' => $this->getType($request), 'companiesSameArea' => $companies], 'companyName' => $companyName,
+            'userData' => $userData,
+            'companyName' => $companyName,
             'currentUrl' => $request->url()]);
     }
 

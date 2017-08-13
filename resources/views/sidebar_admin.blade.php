@@ -29,13 +29,22 @@
             <li>
                 <a class="parent1" href="#">信息管理</a>
                 	<ul>
+                        @if(Auth::user()->type == 2)
                     	<li><a href="/admin/area">区域信息</a></li>
-                            <li><a href="/admin/company">企业信息</a></li>
-                            <li><a href="/admin/approval">审批信息</a></li>
-                            <li><a href="/admin/acceptance">验收信息</a></li>
-                           <li> <a href="/admin/check">执法检查信息</a></li>
-                           <li> <a href="/admin/terminal">设备信息</a></li>
-                           <li> <a href="/admin/station">监测点</a></li>
+                        <li><a href="/admin/company">企业信息</a></li>
+                        <li><a href="/admin/approval">审批信息</a></li>
+                        <li><a href="/admin/acceptance">验收信息</a></li>
+                        <li> <a href="/admin/check">执法检查信息</a></li>
+                        <li> <a href="/admin/terminal">设备信息</a></li>
+                        <li> <a href="/admin/station">监测点</a></li>
+                        @elseif(Auth::user()->type == 3)
+                            <li><a href="/admin/company?tid={{$companytid}}">企业信息</a></li>
+                            <li><a href="/admin/approval?tid={{$companytid}}">审批信息</a></li>
+                            <li><a href="/admin/acceptance?tid={{$companytid}}">验收信息</a></li>
+                            <li> <a href="/admin/check?tid={{$companytid}}">执法检查信息</a></li>
+                            <li> <a href="/admin/terminal?tid={{$companytid}}">设备信息</a></li>
+                            <li> <a href="/admin/station?tid={{$companytid}}">监测点</a></li>
+                        @endif
                     </ul>
             </li>
         </ul>

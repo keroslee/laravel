@@ -17,6 +17,9 @@ class Station extends TableBase
         if ($request->companyName) {
             $where[] = ['c.companyname', $request->companyName];
         }
+        if ($request->tid) {
+            $where[] = ['c.tid', $request->tid];
+        }
         $results = DB::table($this->table . ' s')
             ->leftJoin('T_BASE_COMPANY c', 'c.tid', '=', 's.companyTID')
             /*->leftJoin('T_BASE_TERMINAL t', 't.tid', '=', 's.stationname')

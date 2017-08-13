@@ -61,11 +61,21 @@ class Controller extends BaseController
 
     protected function getUserData(Request $request)
     {
-        return [
-            'type' => $this->getType($request),
+        $userData = [
+            'type' => (int)$request->user()->type,
             'areaList' => $this->getAreaList($request),
             'areaBigList' => $this->getBigArea()
         ];
+
+        if($userData['type'] == 3){
+            $user = DB::table('rights')
+//                ->leftJoin('t_base_company','rights.companytid','=','t_base_company.tid')
+                ->where('rights.userid', $request->user()->id)
+                ->first();
+            $userData['companytid'] = $user->companytid;
+        }
+
+        return $userData;
     }
 
     protected function getMyCompanies(Request $request)

@@ -16,6 +16,8 @@
 
             @include('admin.message')
             <h4>设备信息表</h4>
+
+            @if(Auth::user()->type == 2)
             <form class="form-inline" action="{{$currentUrl}}" method="post">
                 {{csrf_field()}}
                 <div class="form-group">
@@ -24,6 +26,8 @@
                 </div>
                 <button type="submit" class="btn ">查询</button>
             </form>
+            @endif
+
             <table id="tableData" class="table table-bordered">
                 <thead>
                 <tr>
@@ -82,11 +86,15 @@
                 </tbody>
             </table>
             {{$results->appends(['companyName' => $companyName])->links('vendor.pagination.default')}}
+
+            @if(Auth::user()->type == 2)
             <form class="form-inline" action="{{$currentUrl}}" method="post">
                 {{csrf_field()}}
                 <button type="button" class="btn " id="add" data-toggle="modal" data-target="#modalEdit">增加</button>
                 <button type="button" class="btn btn-del" id="del">删除</button>
             </form>
+            @endif
+
             <!-- add/edit-->
             <div class="modal fade" tabindex="-1" role="dialog" id="modalEdit" aria-labelledby="modalEditTitle">
                 <div class="modal-dialog" role="document">

@@ -18,6 +18,9 @@ class TableBase extends Controller
         if ($request->companyName) {
             $where[] = ['c.companyname', $request->companyName];
         }
+        if ($request->tid) {
+            $where[] = ['c.tid', $request->tid];
+        }
         $results = DB::table($this->table . ' s')
             ->leftJoin('T_BASE_COMPANY c', 'c.tid', '=', 's.companyTID')
             ->where($where)
@@ -46,7 +49,6 @@ class TableBase extends Controller
 
     public function del(Request $request)
     {
-        Log::info($request->all());
         $tids = $request->tids;
 
         if (count($tids) > 0) {
@@ -63,7 +65,6 @@ class TableBase extends Controller
     public function upd(Request $request)
     {
         $data = $request->data;
-        Log::info($data);
         $result = DB::table($this->table)
             ->where('TID', $data['tid'])
             ->update($data);

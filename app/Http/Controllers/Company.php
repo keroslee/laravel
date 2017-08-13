@@ -20,7 +20,7 @@ class Company extends Controller
 
 //        $where[] = ['T_BASE_COMPANY.tid', 'in', $myCompanies->toArray()];
         $where[] = ['T_DATA_STATION.realtime', '>', date('YmdHis', floor(time() / 300) * 300-300)];
-        Log::info($where);
+        
         if ($status != null) {
             //$where[] = ['result', $status];
         }
@@ -31,14 +31,13 @@ class Company extends Controller
             $where[] = ['T_BASE_COMPANY.parea', $areaTid];
         }
 
-        Log::info($where);
         $result = DB::table('T_DATA_STATION')
             ->leftJoin('T_BASE_COMPANY', 'T_DATA_STATION.PCOMPANY', '=', 'T_BASE_COMPANY.COMPANYNAME')
             ->where($where)
 //            ->whereIn('T_BASE_COMPANY.tid', $myCompanies)
             ->orderBy('T_DATA_STATION.PCOMPANY')
             ->get();
-        Log::info($result);
+
         $companies = [];
         foreach ($result as $index => $res) {
             if (isset($companies[$res->pcompany])) {
@@ -105,7 +104,7 @@ class Company extends Controller
 //            ->whereIn('T_BASE_COMPANY.tid', $myCompanies)
             ->orderBy('T_DATA_STATION.PCOMPANY')
             ->get();
-        Log::info($result);
+
         $companies = [];
         foreach ($result as $index => $res) {
             if (isset($companies[$res->tid])) {

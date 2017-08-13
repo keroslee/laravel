@@ -16,6 +16,7 @@
             {{--@include('company_status',$status)--}}
 
             <h4>单位基本信息表</h4>
+            @if(Auth::user()->type == 2)
             <form class="form-inline" action="{{$currentUrl}}" method="post">
                 {{csrf_field()}}
                 <input name="areaTid" value="{{$areaTid}}" class="hidden">
@@ -27,6 +28,7 @@
                 <button type="button" class="btn " id="add" data-toggle="modal" data-target="#modalEdit">增加</button>
                 <button type="button" class="btn btn-del" id="del">删除</button>
             </form>
+            @endif
             @include('admin.message')
 
             <table id="tableData" class="table table-bordered">

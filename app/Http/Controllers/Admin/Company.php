@@ -21,6 +21,9 @@ class Company extends Controller
         if ($request->companyName) {
             $where[] = 'c.companyname=\'' . $request->companyName . '\'';
         }
+        if ($request->tid) {
+            $where[] = 'c.tid=\'' . $request->tid . '\'';
+        }
         $where = $where ? ' where ' . implode(' and', $where) : '';
 
 //        $rights = DB::table('RIGHTS')
@@ -39,7 +42,7 @@ LEFT JOIN T_BASE_AREA a ON c.parea=a.tid
 LEFT JOIN (SELECT * FROM RIGHTS r LEFT JOIN USERS u ON r.userid=u.id WHERE u.type=3) right ON c.tid=right.companytid' . $where);
 //        $results = new Collection($results);
 //        ->paginate(20);
-        Log::info($results);
+
 //        $perPage = 2;
 //        $results = new \Illuminate\Pagination\LengthAwarePaginator(array_slice($results, $page-1, $perPage), count($results), $perPage);
 //        $results->setPath('company');
@@ -88,7 +91,6 @@ LEFT JOIN (SELECT * FROM RIGHTS r LEFT JOIN USERS u ON r.userid=u.id WHERE u.typ
 
     public function del(Request $request)
     {
-        Log::info($request->all());
         $tids = $request->tids;
 
         if (count($tids) > 0) {

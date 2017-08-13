@@ -11,7 +11,6 @@ class CompanySummary extends Controller
     public function index(Request $request, $companyId = null)
     {
         $myCompanies = $this->getMyCompanies($request);
-        Log::info($myCompanies);
         $where = [];
         $companyName = $request->companyName;
         $startTime = $request->startTime;
@@ -28,8 +27,6 @@ class CompanySummary extends Controller
         }
         $where = $where ? implode(' and ', $where) : 'realtime > to_char(sysdate,\'yyyymmdd\')||\'000000\'';
         $where = $where . ' and pcompany in (\'' . implode('\' ,\'', $myCompanies->toArray()) . '\')';
-
-        Log::info($where);
 
         $results = DB::select('SELECT * FROM T_DATA_STATION
             WHERE ' . $where);

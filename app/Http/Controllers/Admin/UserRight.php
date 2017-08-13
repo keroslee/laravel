@@ -46,8 +46,6 @@ class UserRight extends Controller
 
         $result = DB::table('rights')->where('userid', $userId)->delete();
 
-        Log::info('del ret' . $request);
-
         if ($companyTids) {
             foreach ($companyTids as $companyTid) {
                 $data[] = [
@@ -57,7 +55,6 @@ class UserRight extends Controller
             }
 
             $result = DB::table('rights')->insert($data);
-            Log::info('insert ret' . $request);
         }
 
         return response()->json(['res' => $result >= 0]);
