@@ -41,45 +41,10 @@ class Home extends Controller
 
     private function status($myCompanies)
     {
-        $stationsBase = DB::table('T_BASE_TERMINAL t')
-            ->leftJoin('T_BASE_COMPANY c', 'c.tid', '=', 't.companytid')
-            ->whereIn('c.companyname', $myCompanies)
-            ->get();
-
-        $myStations = DB::table('T_DATA_TERMINAL as d')
-            ->whereIn('d.pcompany', $myCompanies)
+        $running = DB::table('T_DATA_COMPANY as d')
+            ->whereIn('d.companyname', $myCompanies)
             ->where('d.realtime','>',date('YmdHis', floor(time() / 300) * 300-300))
-            ->get();
-
-        $stations = [];
-        foreach ($myStations as $myStation) {
-            foreach ($stationsBase as $stationBase) {
-                if ($stationBase->companyname == $myStation->pcompany
-                    && $stationBase->terminalname == $myStation->stationname
-                ) {
-                    $stations[] = array(
-                        'pcompany' => $myStation->pcompany,
-                        'type' => $stationBase->type,
-                        'state' => $myStation->state
-                    );
-                }
-            }
-        }
-        
-        $runningCompanies = [];
-        $companies = [];
-        foreach ($stations as $station) {
-            if (!in_array($station['pcompany'], $companies)) {
-                $companies[] = $station['pcompany'];
-            }
-
-            if ($station['type'] == 0
-                && $station['state'] == 1
-                && !in_array($station['pcompany'], $runningCompanies)
-            ) {
-                $runningCompanies[] = $station['pcompany'];
-            }
-        }
+            ->count();
 
 		$good = DB::table('T_DATA_COMPANY as d')
             ->whereIn('d.companyname', $myCompanies)
@@ -93,7 +58,7 @@ class Home extends Controller
             ->where('d.realtime','>',date('YmdHis', floor(time() / 300) * 300-300))
 			->count();
 
-        return ['total' => count($companies), 'running' => count($runningCompanies), 'good'=>$good, 'bad'=>$bad];
+        return ['total' => count($myCompanies), 'running' => $running, 'good'=>$good, 'bad'=>$bad];
     }
 
     public function uuid()

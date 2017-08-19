@@ -40,6 +40,9 @@
           </a>
       </li>
       @endif
+          <li>
+          <?php $userType = ['', '超级管理员', '管理员', '企业用户'];?>
+              您好，{{$userType[$type]}}：{{ Auth::user()->name }}</li>
       <li class="aaa">
           <a href="{{ url('/logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
               <img src="/img/end.png" width="24px" ;/>&nbsp;退出

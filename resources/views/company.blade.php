@@ -88,7 +88,7 @@
                         cells[3].innerHTML = ret[tid]['running'];
                         cells[4].innerHTML = ret[tid]['total'];
                         cells[5].innerHTML = ret[tid]['good'];
-                        cells[6].innerHTML = ret[tid]['bad'];
+                        cells[6].innerHTML = '<span style="'+ (ret[tid]['bad']>0?'color: red;':'') +'">'+ ret[tid]['bad'] + '</span>';
                     }
                 }
             }).fail(function (ret) {

@@ -10,20 +10,12 @@ class Company extends Controller
 {
     public function index(Request $request, $status = null)
     {
-        $where = [];
         $companyName = $request->companyName;
         $areaTid = $request->area;
         $userId = $request->user()->id;
-//        $myCompanies = DB::table('rights')
-//            ->where('rights.userid', $userId)
-//            ->pluck('companytid');
 
-//        $where[] = ['T_BASE_COMPANY.tid', 'in', $myCompanies->toArray()];
+        $where = [];
         $where[] = ['T_DATA_STATION.realtime', '>', date('YmdHis', floor(time() / 300) * 300-300)];
-        
-        if ($status != null) {
-            //$where[] = ['result', $status];
-        }
         if ($companyName != null) {
             $where[] = ['T_DATA_STATION.PCOMPANY', 'like', '%' . $companyName . '%'];
         }
@@ -31,10 +23,33 @@ class Company extends Controller
             $where[] = ['T_BASE_COMPANY.parea', $areaTid];
         }
 
+        $myCompanyNames = DB::table('rights')
+            ->leftJoin('T_BASE_COMPANY', 'rights.companytid', '=', 'T_BASE_COMPANY.tid')
+            ->where('rights.userid', $userId)
+            ->pluck('companyname');
+        if($status == 'running') {
+            $myCompanyNames = DB::table('T_DATA_COMPANY as d')
+                ->whereIn('d.companyname', $myCompanyNames)
+                ->where('d.realtime','>',date('YmdHis', floor(time() / 300) * 300-300))
+                ->pluck('companyname');
+        }elseif($status == 'good') {
+            $myCompanyNames = DB::table('T_DATA_COMPANY as d')
+                ->whereIn('d.companyname', $myCompanyNames)
+                ->where('result','1')
+                ->where('d.realtime','>',date('YmdHis', floor(time() / 300) * 300-300))
+                ->pluck('companyname');
+        }elseif($status == 'bad') {
+            $myCompanyNames = DB::table('T_DATA_COMPANY as d')
+                ->whereIn('d.companyname', $myCompanyNames)
+                ->where('result','0')
+                ->where('d.realtime','>',date('YmdHis', floor(time() / 300) * 300-300))
+                ->pluck('companyname');
+        }
+
         $result = DB::table('T_DATA_STATION')
             ->leftJoin('T_BASE_COMPANY', 'T_DATA_STATION.PCOMPANY', '=', 'T_BASE_COMPANY.COMPANYNAME')
             ->where($where)
-//            ->whereIn('T_BASE_COMPANY.tid', $myCompanies)
+            ->whereIn('T_DATA_STATION.PCOMPANY', $myCompanyNames)
             ->orderBy('T_DATA_STATION.PCOMPANY')
             ->get();
 
@@ -71,21 +86,8 @@ class Company extends Controller
             $companies[$res->pcompany]['tel'] = $res->lianxitel;
             $companies[$res->pcompany]['tid'] = $res->tid;
         }
-        $companyCount = DB::table('T_BASE_COMPANY')->count();
-        $companyGoodCount = DB::table('T_DATA_COMPANY')->where('result', '1')->count();
-        $companyBadCount = DB::table('T_DATA_COMPANY')->where('result', '0')->count();
-
-		if ($status != null) {
-			$CompaniesOfStatus = DB::table('T_DATA_COMPANY')->where('result', $status)->pluck('companyname')->toArray();
-			foreach($companies as $name=>$company){
-				if(!in_array($name,$CompaniesOfStatus)){
-					unset($companies[$name]);
-				}
-			}
-		}
 
         return view('company', [
-            'companyStatus' => ['total' => $companyCount, 'good' => $companyGoodCount, 'bad' => $companyBadCount],
             'status' => $status,
             'companyName' => $companyName,
             'currentUrl' => $request->url(),

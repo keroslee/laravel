@@ -1,22 +1,6 @@
 <div class="sidebar">
     <div class="item-nav">
         <ul>
-
-            <!--<li style="display:none">
-                <form>
-                    <input type="text" placeholder="请输入单位名称" class="inp">
-                </form>
-                <button class="search-btn">搜索单位</button>
-                <ul>
-                    <li>
-                        <ul>
-                            <li><a href="#">华为集团</a></li>
-                            <li><a href="#">小米集团</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
--->
             @if(isset($areaList) && $type==2)
                 @foreach($areaList as $key=>$areaB)
                     <li>
@@ -46,15 +30,6 @@
                 </ul>
             </li>
             @endif
-
-            <li>
-                <?php $userType = ['', '超级管理员', '管理员', '企业用户'];?>
-                <p style="text-align:center; margin: 10px 40px; font-size:12px;color: #fff;position:absolute;bottom:5em;">
-                    您好：{{ Auth::user()->name }}
-                    <br/>
-                    {{$userType[$type]}}
-                </p>
-            </li>
         </ul>
     </div>
 

@@ -30,6 +30,7 @@
                 </ul>
             <div class="tab-content ">
                 <div id="info" class="tab-pane active">
+                    <div class="row">
                     <div id="status" class="top left" style="background:{{$status['state']?'green':'red'}};margin-top:20px;">
                         <div class="situation">
                             <span>简单工艺流程图</span>
@@ -41,7 +42,6 @@
                     <div class="history">
                         <div class="right" style="padding-top:20px;">
                             <table id="tblSource">
-                                <th colspan="2">源设备：</th>
                                 @foreach($terminals as $terminal)
                                     @if($terminal->type == 0)
                                         <tr>
@@ -72,6 +72,7 @@
                                 @endforeach
                             </table>
                         </div>
+                    </div>
                     </div>
                 </div>
                 <div id="video" class="tab-pane ">
@@ -106,8 +107,8 @@
                     var stations = ret['stations'];
                     var tblSource = document.getElementById('tblSource');
                     var length = tblSource.rows.length;
-                    for (var index=1; index<length;index++) {
-                        tblSource.deleteRow(1)
+                    for (var index=0; index<length;index++) {
+                        tblSource.deleteRow(0)
                     }
 
                     for (var tid in terminals) {
