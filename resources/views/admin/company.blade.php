@@ -113,7 +113,7 @@
                 @endforeach
                 </tbody>
             </table>
-        {{--{{$companies->appends(['companyName' => $companyName])->links('vendor.pagination.default')}}--}}
+            {{$companies->appends(['companyName' => $companyName])->links('vendor.pagination.default')}}
 
             <!-- add/edit-->
             <div class="modal fade" tabindex="-1" role="dialog" id="modalEdit" aria-labelledby="modalEditTitle">
@@ -478,13 +478,22 @@
                 processData: false,
                 contentType: false
             }).done(function (res) {
-                if(res == 'success'){
+                if(res['res'] == 'success'){
                     success('导入成功！');
                 }else{
-                    success('保存成功！');
+                    console.log(res['msg']);
+                    var msg = res['msg'];
+                    if(msg.indexOf('cannot insert NULL into') >-1){
+                        fail('导入失败！请检查账号是否为空！');
+                    }else if(msg.indexOf('unique constraint') >-1){
+                        fail('导入失败！请检查账号是否重复！');
+                    }else{
+                        fail('导入失败！');
+                    }
                 }
             }).fail(function (res) {
                 console.log(res);
+                fail('网络出错！')
             });
         });
     </script>

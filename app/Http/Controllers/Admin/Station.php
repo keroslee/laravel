@@ -28,7 +28,10 @@ class Station extends TableBase
             ->select('s.*', 'c.companyname'/*, 't.terminalname'*/)
             ->paginate(20);
 
-        $companies = DB::table('T_BASE_COMPANY')->get();
+        $myCompanies = $this->getMyCompanyTids($request);
+        $companies = DB::table('T_BASE_COMPANY')
+            ->whereIn('tid',$myCompanies)
+            ->get();
 
         $allTerminals = DB::table('T_BASE_TERMINAL')->where('type', 1)->get();
         $terminals = [];

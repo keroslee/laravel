@@ -26,7 +26,11 @@ class TableBase extends Controller
             ->where($where)
             ->select('s.*', 'c.companyname')
             ->paginate(20);
-        $companies = DB::table('T_BASE_COMPANY')->get();
+
+        $myCompanies = $this->getMyCompanyTids($request);
+        $companies = DB::table('T_BASE_COMPANY')
+            ->whereIn('tid',$myCompanies)
+            ->get();
 
         return view($this->view, [
             'results' => $results,

@@ -2,12 +2,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use DB;
 use Excel;
 use Ramsey\Uuid\Uuid;
 use Log;
+use Illuminate\Database\QueryException;
 
 class Company extends Controller
 {
@@ -15,6 +15,7 @@ class Company extends Controller
     {
 //        $myCompanies = $this->getMyCompanyTids($request);
         $page = $request->page;
+        $page = $page ? $page : 1;
 
         $where = [];
         if ($request->areaTid) {
@@ -45,9 +46,14 @@ LEFT JOIN (SELECT * FROM RIGHTS r LEFT JOIN USERS u ON r.userid=u.id WHERE u.typ
 //        $results = new Collection($results);
 //        ->paginate(20);
 
-//        $perPage = 2;
+//        $perPage = 10;
 //        $results = new \Illuminate\Pagination\LengthAwarePaginator(array_slice($results, $page-1, $perPage), count($results), $perPage);
 //        $results->setPath('company');
+
+        $perPage = 10;
+        $offset = ($page * $perPage) - $perPage;
+        $results = new \Illuminate\Pagination\LengthAwarePaginator(array_slice($results, $offset, $perPage, true), count($results), $perPage, $page,
+            ['path' => $request->url(), 'query' => $request->query()]);
 
         $pareas = DB::table('T_BASE_AREA')
             ->whereNotNull('PAREA')
@@ -147,13 +153,13 @@ LEFT JOIN (SELECT * FROM RIGHTS r LEFT JOIN USERS u ON r.userid=u.id WHERE u.typ
 //            $json['res'] = false;
 //        } else {
 //            $userId = DB::table('USERS')->where('email', $userData['acc'])->value('id');
-            $updateUserResult = DB::table('USERS')
-                ->where('id', $userData['userid'])
-                ->update(['name' => $userData['acc'], 'email' => $userData['acc'], 'password' => bcrypt($userData['passwd']), 'type' => 3]);
-            if (!$updateUserResult) {
-                $json['err'] = '修改账号信息失败';
-                $json['res'] = false;
-            }
+        $updateUserResult = DB::table('USERS')
+            ->where('id', $userData['userid'])
+            ->update(['name' => $userData['acc'], 'email' => $userData['acc'], 'password' => bcrypt($userData['passwd']), 'type' => 3]);
+        if (!$updateUserResult) {
+            $json['err'] = '修改账号信息失败';
+            $json['res'] = false;
+        }
 //        }
 
         return response()->json($json);
@@ -161,25 +167,58 @@ LEFT JOIN (SELECT * FROM RIGHTS r LEFT JOIN USERS u ON r.userid=u.id WHERE u.typ
 
     public function import(Request $request)
     {
-        if($request->hasFile('file')){
+        $ret = ['res' => 'fial'];
+        if ($request->hasFile('file')) {
             $path = $request->file('file')->getRealPath();
-            $data = Excel::load($path, function($reader) {})->get();
+            $data = Excel::load($path, function ($reader) {
+            })->get();
+            $usersAcc = [];
+            $users = [];
+            $acc2Tid = [];
+            $rights = [];
 
-            if(!empty($data) && $data->count()){
+            if (!empty($data) && $data->count()) {
                 foreach ($data->toArray() as $key => $value) {
-                    if(!empty($value)){
+                    if (!empty($value)) {
                         foreach ($value as $v) {
                             $v['tid'] = Uuid::uuid4()->toString();
+                            $usersAcc[] = $v['acc'];
+                            $users[] = ['name' => $v['acc'], 'email' => $v['acc'], 'password' => bcrypt($v['password']), 'type'=>3];
+                            $acc2Tid[$v['acc']] = $v['tid'];
+                            unset($v['acc']);
+                            unset($v['password']);
                             $insertData[] = $v;
                         }
                     }
                 }
-                if(!empty($insertData)){
-                    $result = DB::table('t_base_company')->insert($insertData);
-                    return $result?'success':'fail';
+                if (!empty($insertData) && !empty($users)) {
+                    try {
+                        $result = DB::table('users')->insert($users);
+                        if ($result) {
+                            $result = DB::table('t_base_company')->insert($insertData);
+                            if ($result) {
+                                $users = DB::table('users')->whereIn('email', $usersAcc)->get();
+                                foreach ($users as $u) {
+                                    $rights[] = ['userid' => $u->id, 'companytid' => $acc2Tid[$u->email]];
+                                }
+                                $result = DB::table('rights')->insert($rights);
+                                if ($result) {
+                                    $ret['res'] = $result ? 'success' : $ret;
+                                } else {
+                                    $ret['msg'] = 'insert rights failed';
+                                }
+                            } else {
+                                $ret['msg'] = 'insert companies failed';
+                            }
+                        } else {
+                            $ret['msg'] = 'insert users failed';
+                        }
+                    } catch (QueryException $e) {
+                        $ret['msg'] = $e->getMessage();
+                    }
                 }
             }
         }
-        return 'fail';
+        return $ret;
     }
 }

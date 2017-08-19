@@ -93,14 +93,12 @@
             </table>
             {{$results->appends(['companyName' => $companyName])->links('vendor.pagination.default')}}
 
-            @if(Auth::user()->type == 2)
             <form class="form-inline" action="{{$currentUrl}}" method="post">
                 {{csrf_field()}}
                 <button type="button" class="btn" id="add" data-toggle="modal" data-target="#modalEdit">增加</button>
                 <button type="button" class="btn btn-del" id="del">删除</button>
                 {{$results->links('vendor.pagination.default')}}
             </form>
-            @endif
         </div>
 
 

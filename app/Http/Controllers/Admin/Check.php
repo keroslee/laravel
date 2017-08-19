@@ -25,7 +25,11 @@ class Check extends TableBase
             ->select('s.*', 'c.companyname')
             ->orderBy('sj', 'desc')
             ->paginate(20);
-        $companies = DB::table('T_BASE_COMPANY')->get();
+
+        $myCompanies = $this->getMyCompanyTids($request);
+        $companies = DB::table('T_BASE_COMPANY')
+            ->whereIn('tid',$myCompanies)
+            ->get();
 
         return view($this->view, [
             'results' => $results,
