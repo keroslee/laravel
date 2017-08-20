@@ -62,7 +62,7 @@ class Terminal extends Controller
                                                   left join T_BASE_COMPANY c 
                                                       on c.tid=t.companytid) tc 
                                           on t.pcompany=tc.companyname 
-                                              and t.stationname=tc.terminalname 
+                                              and t.stationname=tc.code
                                       where t.realtime > to_char(sysdate - interval '5' MINUTE,'yyyyMMddHH24miss')
                                           and tc.companytid='" . $tid . "'
                                       order by tc.type");
@@ -90,7 +90,7 @@ class Terminal extends Controller
         $stationsResult = DB::table('T_BASE_STATION')->where('companytid', $tid)->get();
         $stations = [];
         foreach($stationsResult as $station){
-            $stations[$station->stationname] = explode(',',$station->zlsbs);
+            $stations[$station->wrysb] = explode(',',$station->zlsbs);
         }
         return [
             'terminals' => $terminals,
