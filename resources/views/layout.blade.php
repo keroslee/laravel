@@ -15,7 +15,7 @@
   <div class="nav">
     <h4>
         <img src="/img/logo.png" height="30em">&nbsp;环保辅助管理系统</h4>
-    <ul>
+    <ul style="background: #1fb5ac;">
       @if(isset($type) && $type!=1)
       <li class="aaa" style="{{Request::is('/')?'background:#199a92;':''}}"> <a  style="padding:0 1em;" href="/"><img src="/img/hz.png" width="20px" ;/>&nbsp;首页</a></li>
       @endif
