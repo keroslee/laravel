@@ -8,6 +8,9 @@ use Excel;
 use Ramsey\Uuid\Uuid;
 use Log;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Contracts\Encryption\DecryptException;
+use \Crypt;
 
 class Company extends Controller
 {
@@ -129,6 +132,7 @@ LEFT JOIN (SELECT * FROM RIGHTS r LEFT JOIN USERS u ON r.userid=u.id WHERE u.typ
 
             DB::table('USERS')
                 ->whereIn('id', $users)
+                ->where('type',3)
                 ->delete();
         } else {
             $result = 0;
@@ -153,9 +157,16 @@ LEFT JOIN (SELECT * FROM RIGHTS r LEFT JOIN USERS u ON r.userid=u.id WHERE u.typ
 //            $json['res'] = false;
 //        } else {
 //            $userId = DB::table('USERS')->where('email', $userData['acc'])->value('id');
+
+        if( strlen($userData['passwd']) == 60 && preg_match('/^\$2y\$/', $userData['passwd'] )){
+            $passwd = $userData['passwd'];
+        }else{
+            $passwd = bcrypt($userData['passwd']);
+        }
+
         $updateUserResult = DB::table('USERS')
             ->where('id', $userData['userid'])
-            ->update(['name' => $userData['acc'], 'email' => $userData['acc'], 'password' => bcrypt($userData['passwd']), 'type' => 3]);
+            ->update(['name' => $userData['acc'], 'email' => $userData['acc'], 'password' => $passwd, 'type' => 3]);
         if (!$updateUserResult) {
             $json['err'] = '修改账号信息失败';
             $json['res'] = false;

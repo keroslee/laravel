@@ -221,7 +221,7 @@
         var _token = '{{csrf_token()}}';
         $.guid = $.now();
 
-        $('#modalEdit11').on('show.bs.modal', function (event) {
+        $('#modalEdit').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
             var modal = $(this);
 
@@ -308,10 +308,19 @@
                 cells[6].innerHTML = data['zlsbs'];
                 cells[7].innerHTML = data['zlsbs_fz'];
                 cells[8].innerHTML = data['mark'];
+                var btn = $('#btn'+data['tid'])
+                btn.data('tid',data['tid'])
+                btn.data('companytid',data['companytid'])
+                btn.data('stationname',data['stationname'])
+                btn.data('levels',data['levels'])
+                btn.data('type',data['type'])
+                btn.data('zlsbs',data['zlsbs'])
+                btn.data('zlsbs_fz',data['zlsbs_fz'])
+                btn.data('mark',data['mark'])
             } else {
                 var table = document.getElementById('tableData')
                 var row = table.insertRow();
-
+                row.id = 'row'+data['tid']
                 var cell = row.insertCell();
                 cell.innerHTML = '<div class="checkbox"><label><input type="checkbox" name="tids[]" value="' + data['tid'] + '"></label></div>';
                 cell = row.insertCell();

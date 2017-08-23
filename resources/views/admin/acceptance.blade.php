@@ -259,13 +259,21 @@
                 cells[2].innerHTML = $('#modalEdit').find('.modal-body #companyTid option:selected').text();
                 cells[3].innerHTML = data['ysno'];
                 cells[4].innerHTML = data['ysbm'];
-		cells[5].innerHTML = data['yssj'];
-		cells[6].innerHTML = '<a href="' + data['content'] + '" >查看</a>';
-		cells[7].innerHTML = data['mark'];
+                cells[5].innerHTML = data['yssj'];
+                cells[6].innerHTML = '<a href="' + data['content'] + '" >查看</a>';
+                cells[7].innerHTML = data['mark'];
+                var btn = $('#btn'+data['tid']);
+                btn.data('tid',data['tid'])
+                btn.data('company-tid',data['companytid'])
+                btn.data('ysno',data['ysno'])
+                btn.data('ysbm',data['ysbm'])
+                btn.data('yssj',data['yssj'])
+                btn.data('content',data['content'])
+                btn.data('mark',data['mark'])
             } else {
                 var table = document.getElementById('tableData')
                 var row = table.insertRow();
-
+                row.id='row'+data['tid'];
                 var cell = row.insertCell();
                 cell.innerHTML = '<div class="checkbox"><label><input type="checkbox" name="tids[]" value="' + data['tid'] + '"></label></div>';
                 cell = row.insertCell();
@@ -286,7 +294,7 @@
                 cell.innerHTML = '<button type="button" class="bj" data-toggle="modal" data-target="#modalEdit"' +
                         ' id="btn' + data['tid'] + '"' +
                         ' data-tid="' + data['tid'] + '"' +
-                        ' data-company-name="' + data['companyTid'] + '"' +
+                        ' data-company-tid="' + data['companytid'] + '"' +
                         ' data-ysno="' + data['ysno'] + '"' +
                         ' data-ysbm="' + data['ysbm'] + '"' +
                         ' data-yssj="' + data['yssj'] + '"' +

@@ -218,10 +218,14 @@
                 cells[2].innerHTML = data['area'];
                 cells[3].innerHTML = $('#modalEdit').find('.modal-body #pArea option:selected').text();
                 cells[4].innerHTML = data['mark'];
+                var btn = $('#btn'+data['tid']);
+                btn.data('area',data['area']);
+                btn.data('p-area',data['pArea']);
+                btn.data('mark',data['mark']);
             } else {
                 var table = document.getElementById('tableData')
                 var row = table.insertRow();
-
+                row.id = 'row' + data['tid']
                 var cell = row.insertCell();
                 cell.innerHTML = '<div class="checkbox"><label><input type="checkbox" name="tids[]" value="' + data['tid'] + '"></label></div>';
                 cell = row.insertCell();
@@ -236,8 +240,8 @@
                 cell.innerHTML = '<button type="button" class="bj" data-toggle="modal" data-target="#modalEdit"' +
                         ' id="btn' + data['tid'] + '"' +
                         ' data-tid="' + data['tid'] + '"' +
-                        ' data-company-name="' + data['area'] + '"' +
-                        ' data-p-area="' + data['parea'] + '"' +
+                        ' data-area="' + data['area'] + '"' +
+                        ' data-p-area="' + data['pArea'] + '"' +
                         ' data-mark="' + data['mark'] + '"><img src="/img/bj.png" width="20px"/>编辑</button>';
             }
         }

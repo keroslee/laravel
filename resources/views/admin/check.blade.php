@@ -267,10 +267,18 @@
                 cells[5].innerHTML = data['sj'];
                 cells[6].innerHTML = '<a href="' + data['result'] + '">查看</a>';
                 cells[7].innerHTML = data['mark'];
+                var btn = $('#btn'+data['tid'])
+                btn.data('tid',data['tid'])
+                btn.data('company-tid',data['companytid'])
+                btn.data('mudi',data['mudi'])
+                btn.data('content',data['content'])
+                btn.data('sj',data['sj'])
+                btn.data('result',data['result'])
+                btn.data('mark',data['mark'])
             } else {
                 var table = document.getElementById('tableData')
                 var row = table.insertRow();
-
+                row.id='row'+data['tid'];
                 var cell = row.insertCell();
                 cell.innerHTML = '<div class="checkbox"><label><input type="checkbox" name="tids[]" value="' + data['tid'] + '"></label></div>';
                 cell = row.insertCell();
@@ -291,7 +299,7 @@
                 cell.innerHTML = '<button type="button" class="bj" data-toggle="modal" data-target="#modalEdit"' +
                         ' id="btn' + data['tid'] + '"' +
                         ' data-tid="' + data['tid'] + '"' +
-                        ' data-company-name="' + data['companytid'] + '"' +
+                        ' data-company-tid="' + data['companytid'] + '"' +
                         ' data-mudi="' + data['mudi'] + '"' +
                         ' data-content="' + data['content'] + '"' +
                         ' data-sj="' + data['sj'] + '"' +

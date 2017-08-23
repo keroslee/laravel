@@ -305,6 +305,10 @@
             if (data['data']['tid']) {
                 postData(data, method);
             } else {
+                if(!(user['acc']&&user['passwd'])){
+                    alert('请为该企业设置用户名和密码！');
+                    return
+                }
                 $.post('/uuid', {_token: _token}).done(function (ret) {
                     data['data']['tid'] = ret['tid'];
                     method = 'add';
@@ -352,6 +356,21 @@
                 cells[10].innerHTML = data['lianXiTel'];
                 cells[11].innerHTML = '<img width="50px;" src="' + data['gongYiTu'] + '">';
                 var cell = cells[12];
+                var btn = $('#btn' + data['tid'])
+                btn.data('tid',data['tid'])
+                btn.data('company-name',data['companyName'])
+                btn.data('p-area',data['pArea'])
+                btn.data('hylb',data['hylb'])
+                btn.data('jclx',data['jclx'])
+                btn.data('wrwlx',data['tid'])
+                btn.data('address',data['address'])
+                btn.data('fa-ren',data['faRen'])
+                btn.data('lian-xi-ren',data['lianXiRen'])
+                btn.data('lian-xi-tel',data['lianXiTel'])
+                btn.data('gong-yi-tu',data['gongYiTu'])
+                btn.data('userid',data['userid'])
+                btn.data('acc',data['acc'])
+                btn.data('passwd',data['passwd'])
             } else {
                 var table = document.getElementById('tableData')
                 var row = table.insertRow();
@@ -386,7 +405,7 @@
                     ' id="btn' + data['tid'] + '"' +
                     ' data-tid="' + data['tid'] + '"' +
                     ' data-company-name="' + data['companyName'] + '"' +
-                    ' data-p-area="' + $('#modalEdit').find('.modal-body #pArea option:selected').text() + '"' +
+                    ' data-p-area="' + $('#modalEdit').find('.modal-body #pArea option:selected').val() + '"' +
                     ' data-hylb="' + data['hylb'] + '"' +
                     ' data-jclx="' + data['jclx'] + '"' +
                     ' data-wrwlx="' + data['wrwlx'] + '"' +

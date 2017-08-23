@@ -265,6 +265,7 @@
             } else {
                 var table = document.getElementById('tableData')
                 var row = table.insertRow();
+                row.id = 'row' + data['tid']
 
                 var cell = row.insertCell();
                 cell.innerHTML = '<div class="checkbox"><label><input type="checkbox" name="tids[]" value="' + data['tid'] + '"></label></div>';
@@ -283,10 +284,10 @@
                 cell = row.insertCell();
                 cell.innerHTML = data['mark'];
                 var cell = row.insertCell();
-                cell.innerHTML = '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEdit"' +
+                cell.innerHTML = '<button type="button" class="bj" data-toggle="modal" data-target="#modalEdit"' +
                         ' id="btn' + data['tid'] + '"' +
                         ' data-tid="' + data['tid'] + '"' +
-                        ' data-company-name="' + data['companytid'] + '"' +
+                        ' data-company-tid="' + data['companytid'] + '"' +
                         ' data-spno="' + data['spno'] + '"' +
                         ' data-spbm="' + data['spbm'] + '"' +
                         ' data-spsj="' + data['spsj'] + '"' +

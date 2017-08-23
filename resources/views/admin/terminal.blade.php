@@ -261,10 +261,18 @@
                 cells[6].innerHTML = data['dosomething'];
                 cells[7].innerHTML = data['mark']
                 var cell = cells[8];
+                var btn = $('#btn'+data['tid'])
+                btn.data('tid',data['tid'])
+                btn.data('companytid',data['companytid'])
+                btn.data('terminalname',data['terminalname'])
+                btn.data('code',data['code'])
+                btn.data('type',data['type'])
+                btn.data('dosomething',data['dosomething'])
+                btn.data('mark',data['mark'])
             } else {
                 var table = document.getElementById('tableData')
                 var row = table.insertRow();
-
+                row.id = 'row'+data['tid']
                 var cell = row.insertCell();
                 cell.innerHTML = '<div class="checkbox"><label><input type="checkbox" name="tids[]" value="' + data['tid'] + '"></label></div>';
                 cell = row.insertCell();
