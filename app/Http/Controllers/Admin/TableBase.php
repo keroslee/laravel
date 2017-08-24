@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
 use Log;
+use Illuminate\Support\Facades\Storage;
 
 class TableBase extends Controller
 {
@@ -29,7 +30,7 @@ class TableBase extends Controller
 
         $myCompanies = $this->getMyCompanyTids($request);
         $companies = DB::table('T_BASE_COMPANY')
-            ->whereIn('tid',$myCompanies)
+            ->whereIn('tid', $myCompanies)
             ->get();
 
         return view($this->view, [
@@ -54,6 +55,25 @@ class TableBase extends Controller
     public function del(Request $request)
     {
         $tids = $request->tids;
+
+        $urls = [];
+        if ($this->table == 'T_MK_SHENPI') {
+            $urls = DB::table($this->table)->whereIn('tid', $tids)->pluck('content');
+        } elseif ($this->table == 'T_MK_YANSHOU') {
+            $urls = DB::table($this->table)->whereIn('tid', $tids)->pluck('content');
+        } elseif ($this->table == 'T_MK_ZHIFAJIANCHA') {
+            $urls = DB::table($this->table)->whereIn('tid', $tids)->pluck('result');
+        }
+        $files = [];
+        foreach ($urls as $indx => $url) {
+            $pos = strpos($url, '/storage/');
+            if ($pos === 0 || $pos > 0) {
+                $files[] = 'public/' . substr($url, $pos + 9);
+            }
+        }
+        Log::info('delete files when deleting rows from ' . $this->table);
+        Log::info($files);
+        Storage::delete($files);
 
         if (count($tids) > 0) {
             $result = DB::table($this->table)

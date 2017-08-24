@@ -221,29 +221,6 @@
         var _token = '{{csrf_token()}}';
         $.guid = $.now();
 
-        $('#modalEdit').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget);
-            var modal = $(this);
-
-            var tid = button.data('tid');
-            var companytid = button.data('companytid');
-            var stationname = button.data('stationname');
-            var levels = button.data('levels');
-            var type = button.data('type');
-            var zlsbs = button.data('zlsbs');
-            var zlsbs_fz = button.data('zlsbs_fz');
-            var mark = button.data('mark');
-
-            modal.find('.modal-body #tid').val(tid);
-            modal.find('.modal-body #companytid').val(companytid);
-            modal.find('.modal-body #stationname').val(stationname);
-            modal.find('.modal-body #levels').val(levels);
-            modal.find('.modal-body #type').val(type);
-            modal.find('.modal-body #zlsbs').val(zlsbs);
-            modal.find('.modal-body #zlsbs_fz').val(zlsbs_fz);
-            modal.find('.modal-body #mark').val(mark);
-        })
-
         $('#save').click(function (env) {
             var modal = $('#modalEdit');
             var method = 'upd';
