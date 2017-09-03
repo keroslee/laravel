@@ -8,7 +8,7 @@
     <div class="box">
         @include('breadcrumb')
         <div class="centent">
-        <form class="form-inline" action="{{$currentUrl}}" method="post">
+        <form id="search" class="form-inline" action="{{$currentUrl}}" method="post">
             {{csrf_field()}}
             <div class="form-group">
                 <label for="companyName">单位名称</label>
@@ -18,9 +18,12 @@
         </form>
 
         <ul class="nav1">
-            <li role="presentation"><a href="{{$companyUrl}}">企业基本信息</a></li>
-            <li role="presentation"><a href="{{$judgeUrl}}">审批与验收信息</a></li>
-            <li role="presentation" class="active" style="background:#199a92"><a href="{{$checkUrl}}">执法检查信息</a></li>
+            <li role="presentation">
+                <a href="javascript:void(0)" data-url="{{$companyUrl}}">企业基本信息</a></li>
+            <li role="presentation">
+                <a href="javascript:void(0)" data-url="{{$judgeUrl}}">审批与验收信息</a></li>
+            <li role="presentation" class="active" style="background:#199a92">
+                <a href="javascript:void(0)" data-url="{{$checkUrl}}">执法检查信息</a></li>
         </ul>
 
         <table class="table table-bordered">
@@ -61,4 +64,16 @@
         {{$results->appends(['companyName' => $companyName])->links('vendor.pagination.default')}}
     </div>
     </div>
+@endsection
+
+@section('script')
+    <script>
+        $('.nav1 a').click(function(){
+            var url = $(this).data('url');
+            console.log(url)
+            var form = $('#search')
+            form.attr('action', url)
+            form.submit();
+        })
+    </script>
 @endsection
