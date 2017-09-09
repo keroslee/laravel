@@ -204,6 +204,7 @@
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control hidden" id="gongYiTu" placeholder="工艺逻辑图">
                                         <input type="file" class="form-control" id="upload" accept="image/*">
+					<div id="progress"></div>
                                     </div>
                                 </div>
                             </form>
@@ -467,13 +468,38 @@
             formData.append('file', $('#upload')[0].files[0]);
             formData.append('_token', '{{csrf_token()}}');
             formData.append('companyTid', $('#tid').val());
+            $('#save').prop("disabled",true);
             $.ajax({
                 url: '/admin/upload',
                 type: 'POST',
                 cache: false,
                 data: formData,
                 processData: false,
-                contentType: false
+                contentType: false,
+                xhr: function()
+                {
+                    var xhr = new window.XMLHttpRequest();
+                    //Upload progress
+                    xhr.upload.addEventListener("progress", function(evt){
+                        if (evt.lengthComputable) {
+                            var percentComplete = evt.loaded / evt.total;
+                            //Do something with upload progress
+                            console.log(percentComplete);
+                            $('#progress').html(Math.floor(percentComplete*100)+'%');
+                            if(percentComplete === 1)
+                                $('#save').prop("disabled",false);
+                        }
+                    }, false);
+                    //Download progress
+                    xhr.addEventListener("progress", function(evt){
+                        if (evt.lengthComputable) {
+                            var percentComplete = evt.loaded / evt.total;
+                            //Do something with download progress
+                            console.log(percentComplete);
+                        }
+                    }, false);
+                    return xhr;
+                },
             }).done(function (res) {
                 $('#gongYiTu').val(res['path'])
             }).fail(function (res) {
