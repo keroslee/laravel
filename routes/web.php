@@ -26,6 +26,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::match(['get', 'post'], '/area_summary', 'AreaSummary@index');
     Route::match(['get','post'],'/info_company', 'Info@company');
     Route::match(['get','post'],'/info_judge', 'Info@judge');
+    Route::match(['get','post'],'/info_accept', 'Info@accept');
     Route::match(['get','post'],'/info_check', 'Info@check');
 
     Route::get('/admin', function () {

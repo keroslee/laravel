@@ -20,9 +20,9 @@
         <ul class="nav1">
             <li role="presentation">
                 <a href="javascript:void(0)" data-url="{{$companyUrl}}">企业基本信息</a></li>
-            <li role="presentation" class="active" style="background:#199a92">
-                <a href="javascript:void(0)" data-url="{{$judgeUrl}}">审批信息</a></li>
             <li role="presentation">
+                <a href="javascript:void(0)" data-url="{{$judgeUrl}}">审批信息</a></li>
+            <li role="presentation" class="active" style="background:#199a92">
                 <a href="javascript:void(0)" data-url="{{$acceptUrl}}">验收信息</a></li>
             <li role="presentation">
                 <a href="javascript:void(0)" data-url="{{$checkUrl}}">执法检查信息</a></li>
@@ -33,11 +33,11 @@
             <tr>
                 <td>序号</td>
                 <td>企业名称</td>
-                <td>审批文号</td>
-                <td>审批部门</td>
-                <td>审批时间</td>
-                <td>审批内容</td>
-                <td>审批备注</td>
+                <td>验收文号</td>
+                <td>验收部门</td>
+                <td>验收时间</td>
+                <td>验收内容</td>
+                <td>验收备注</td>
             </tr>
             </thead>
             <tbody>
@@ -46,12 +46,12 @@
                 <tr class="{{$colors[$index%count($colors)]}}">
                     <td>{{$index+1}}</td>
                     <td>{{$result->companyname}}</td>
-                    <td>{{$result->spno}}</td>
-                    <td>{{$result->spbm}}</td>
-                    <td>{{$result->spsj}}</td>
+                    <td>{{$result->ysno}}</td>
+                    <td>{{$result->ysbm}}</td>
+                    <td>{{$result->yssj}}</td>
                     <td>
                         @if($result->content)
-                        <a href="{{$result->content}}">查看</a>
+                            <a href="{{$result->content}}">查看</a>
                         @endif
                     </td>
                     <td>{{$result->mark}}</td>

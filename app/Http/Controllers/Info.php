@@ -36,6 +36,7 @@ class Info extends Controller
             'companyName' => $companyName,
             'companyUrl' => url('/info_company'),
             'judgeUrl' => url('/info_judge'),
+            'acceptUrl' => url('/info_accept'),
             'checkUrl' => url('/info_check'),
             'userData' => $this->getUserData($request)
         ]);
@@ -53,9 +54,8 @@ class Info extends Controller
         }
 
         $results = DB::table('T_MK_SHENPI s')
-            ->leftJoin('T_MK_YANSHOU y', 's.TID', '=', 'y.TID')
             ->leftJoin('T_BASE_COMPANY c', 'c.tid', '=', 's.companyTID')
-            ->select('s.*', 'y.ysno', 'y.ysbm', 'y.yssj', 'y.CONTENT as yanshou_CONTENT', 'y.MARK as yanshou_MARK', 'c.companyname')
+            ->select('s.*', 'c.companyname')
             ->where($where)
             ->whereIn('c.tid', $myCompanies)
             ->get();
@@ -66,6 +66,37 @@ class Info extends Controller
             'companyName' => $companyName,
             'companyUrl' => url('/info_company'),
             'judgeUrl' => url('/info_judge'),
+            'acceptUrl' => url('/info_accept'),
+            'checkUrl' => url('/info_check'),
+            'userData' => $this->getUserData($request)
+        ]);
+    }
+
+    public function accept(Request $request)
+    {
+        $where = [];
+        $companyName = $request->companyName;
+
+        $myCompanies = $this->getMyCompanyTids($request);
+
+        if ($companyName != null) {
+            $where[] = ['companyname', 'like', '%' . $companyName . '%'];
+        }
+
+        $results = DB::table('T_MK_YANSHOU y')
+            ->leftJoin('T_BASE_COMPANY c', 'c.tid', '=', 'y.companyTID')
+            ->select('y.*', 'c.companyname')
+            ->where($where)
+            ->whereIn('c.tid', $myCompanies)
+            ->get();
+
+        return view('info_accept', [
+            'results' => $results,
+            'currentUrl' => $request->url(),
+            'companyName' => $companyName,
+            'companyUrl' => url('/info_company'),
+            'judgeUrl' => url('/info_judge'),
+            'acceptUrl' => url('/info_accept'),
             'checkUrl' => url('/info_check'),
             'userData' => $this->getUserData($request)
         ]);
@@ -96,6 +127,7 @@ class Info extends Controller
             'companyName' => $companyName,
             'companyUrl' => url('/info_company'),
             'judgeUrl' => url('/info_judge'),
+            'acceptUrl' => url('/info_accept'),
             'checkUrl' => url('/info_check'),
             'userData' => $this->getUserData($request)
         ]);

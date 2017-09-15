@@ -21,7 +21,9 @@
             <li role="presentation" class="active" style="background:#199a92">
                 <a href="javascript:void(0)" data-url="{{$companyUrl}}">企业基本信息</a></li>
             <li role="presentation">
-                <a href="javascript:void(0)" data-url="{{$judgeUrl}}">审批与验收信息</a></li>
+                <a href="javascript:void(0)" data-url="{{$judgeUrl}}">审批信息</a></li>
+            <li role="presentation">
+                <a href="javascript:void(0)" data-url="{{$acceptUrl}}">验收信息</a></li>
             <li role="presentation">
                 <a href="javascript:void(0)" data-url="{{$checkUrl}}">执法检查信息</a></li>
         </ul>
