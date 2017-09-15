@@ -51,7 +51,7 @@
                     <td>{{$result->yssj}}</td>
                     <td>
                         @if($result->content)
-                            <a href="{{$result->content}}">查看</a>
+                            <a target="_blank" href="{{$result->content}}">查看</a>
                         @endif
                     </td>
                     <td>{{$result->mark}}</td>

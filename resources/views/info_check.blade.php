@@ -49,7 +49,7 @@
                     <td>{{$result->mudi}}</td>
                     <td>
                         @if($result->content)
-                        <a href="{{$result->content}}">查看</a>
+                        <a target="_blank" href="{{$result->content}}">查看</a>
                         @endif
                     </td>
                     <td>{{$result->sj}}</td>
