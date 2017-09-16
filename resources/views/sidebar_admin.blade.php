@@ -45,6 +45,7 @@
                             <li> <a href="/admin/terminal?tid={{$companytid}}">设备信息</a></li>
                             <li> <a href="/admin/station?tid={{$companytid}}">监测点</a></li>
                         @endif
+                        <li> <a href="/admin/files">企业文件</a></li>
                     </ul>
             </li>
         </ul>

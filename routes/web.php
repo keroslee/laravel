@@ -73,6 +73,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('admin/userright', 'Admin\UserRight@index');
     Route::post('admin/userright/userright', 'Admin\UserRight@userright');
     Route::post('/admin/userright/upd', 'Admin\UserRight@upd');
+    Route::post('/admin/userright/upd', 'Admin\UserRight@upd');
+    Route::get('/admin/files', 'Admin\Files@index');
+    Route::post('/admin/files/upload', 'Admin\Files@upload');
+    Route::post('/admin/files/del', 'Admin\Files@del');
 });
 //Auth::routes();
 
