@@ -78,8 +78,8 @@ class Files extends Controller
             $path = $request->file->storeAs($companyTid, $fileName, 'public');
             if(!$exist) {
                 $path = '/storage/' . $path;
-                $type = $request->file->getClientMimeType();
-                $res = DB::table('FILES')->insert(['companytid' => $companyTid, 'type' => $type, 'path' => $path, 'upload_time' => date('Y-m-d h:i:s', time())]);
+                $mark = $request->mark;
+                $res = DB::table('FILES')->insert(['companytid' => $companyTid, 'mark' => $mark, 'path' => $path, 'upload_time' => date('Y-m-d h:i:s', time())]);
                 if($res){
                     $ret['res'] = 'success';
                 }else{

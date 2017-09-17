@@ -14,15 +14,19 @@
         <div class="centent">
             <h4>我的文件</h4>
             @if(Auth::user()->type == 3)
-                <form class="form-inline" action="{{$currentUrl}}" method="post">
+                <form class="form-inline" action="{{$currentUrl}}/upload" method="post">
                     {{csrf_field()}}
-                    <button type="button" class="btn btn-del" id="del">删除</button>
                     <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-2 control-label">导入</label>
+                        <label for="mark">文件备注</label>
+                        <input type="text" class="form-control" id="mark" name="mark" placeholder="输入文件备注">
+                    </div>
+                    <div class="form-group">
                         <div class="col-sm-6">
                             <input id="file" name="file" type="file" class="form-horizontal"/>
                         </div>
                     </div>
+                    <button type="button" class="btn " id="upload">上传</button>
+                    <button type="button" class="btn btn-del" id="del">删除</button>
                 </form>
             @endif
             @include('admin.message')
@@ -40,7 +44,7 @@
                     </td>
                     <td>序号</td>
                     <td>企业名称</td>
-                    <td>文件类型</td>
+                    <td>文件备注</td>
                     <td>上传时间</td>
                     <td>下载文件</td>
                 </tr>
@@ -58,7 +62,7 @@
                         </td>
                         <td>{{$idx+1}}</td>
                         <td>{{$file->companyname}}</td>
-                        <td>{{$file->type}}</td>
+                        <td>{{$file->mark}}</td>
                         <td>{{$file->upload_time}}</td>
                         <td>
                             @if($file->path)
@@ -135,8 +139,9 @@
         $('#import').click(function () {
             $('#import').val(null);
         })
-        $('#file').change(function () {
+        $('#upload').click(function () {
             var formData = new FormData();
+            formData.append('mark', $('#mark').val());
             formData.append('file', $('#file')[0].files[0]);
             formData.append('_token', '{{csrf_token()}}');
 
