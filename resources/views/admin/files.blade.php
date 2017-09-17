@@ -159,7 +159,9 @@
                 }else{
                     var msg = res['msg'];
                     if(msg.indexOf('cannot insert') >-1){
-                        fail('上传失败！请检查账号是否为空！');
+                        fail('上传失败！请检查数据库连接！');
+                    }else if(msg.indexOf('file exist') >-1){
+                        fail('上传失败！请先删除旧的文件！');
                     }else{
                         fail('上传失败！');
                     }

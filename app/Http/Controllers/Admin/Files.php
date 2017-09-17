@@ -45,16 +45,19 @@ class Files extends Controller
                     ->where('companytid','=',$companyTid)
                     ->whereIn('ID', $ids)
                     ->pluck('path');
-
+                
+                $files2Del = [];
                 foreach ($files as $index => $file) {
-                    $files[$index] = 'public/'.substr($file, strlen('/storage/'));
+//                    $files[$index] = substr($file, strlen('/storage/'));//delete($files) fail£¬have to put path to new array
+                    $files2Del[] = substr($file, strlen('/storage/'));
                 }
-                $result = Storage::delete($files);
-//                if($result) {
+                $result = Storage::disk('public')->delete($files2Del);
+
+                if($result) {
                     $result = DB::table('FILES')
                         ->whereIn('ID', $ids)
                         ->delete();
-//                }
+                }
             }
         } else {
             $result = 0;
@@ -76,9 +79,12 @@ class Files extends Controller
             $exist = Storage::disk('public')->exists($companyTid.'/'.$fileName);
 
             $path = $request->file->storeAs($companyTid, $fileName, 'public');
-            if(!$exist) {
+            if($exist) {
+                $ret['msg'] = 'file exist';
+            }else{
                 $path = '/storage/' . $path;
                 $mark = $request->mark;
+                $mark = $mark?$mark:' ';
                 $res = DB::table('FILES')->insert(['companytid' => $companyTid, 'mark' => $mark, 'path' => $path, 'upload_time' => date('Y-m-d h:i:s', time())]);
                 if($res){
                     $ret['res'] = 'success';
@@ -86,8 +92,6 @@ class Files extends Controller
                     $ret['res'] = 'fail';
                     $ret['msg'] = 'insert record fail';
                 }
-            }elseif($path){
-                $ret['res'] = 'success';
             }
         }
         return $ret;
