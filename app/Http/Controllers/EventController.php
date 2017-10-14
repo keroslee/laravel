@@ -18,7 +18,7 @@ class EventController extends Controller
 
 	public function index($loc='cn')
     {
-		$events = Event::where('lan',$loc)->get();
+		$events = Event::where('lan',$loc)->orderBy('created_at','desc')->get();
         return view('admin.events',['loc'=>$loc, 'events'=>$events]);
     }
 
