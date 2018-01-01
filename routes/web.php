@@ -12,5 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/index.html');
 });
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/home/{type?}', 'HomeController@index');
+    Route::get('/coupon/{brand?}/{type?}', 'CouponController@index');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
