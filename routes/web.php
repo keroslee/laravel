@@ -50,7 +50,9 @@ Route::group(['prefix' => 'admin', 'middleware'=>['auth','locale']], function(){
 	Route::post('/works_edit/store', 'WorkController@store');
 	Route::post('/works_edit/del_pic', 'WorkController@delPic');
 
-	Route::get('/media', 'MediaController@index');
+	Route::get('/media/{loc?}', 'MediaController@index');
+	Route::post('/media/store', 'MediaController@store');
+	Route::post('/media/del', 'MediaController@del');
 
 	Route::get('/events/{loc?}', 'EventController@index');
 	Route::post('/events/store', 'EventController@store');

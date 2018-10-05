@@ -99,6 +99,7 @@ window.onload = function(){
             return param;
         }
 </script>     
+<script  src="/js/imgs_upload.js"></script>
 </head> 
 <body style="overflow-y:scroll; overflow-x:hidden">
 
@@ -110,24 +111,32 @@ window.onload = function(){
   </div>
   <div class="top_list clearfix" style="width:600px;">
     <ul>
-      <li class="cur"><a href="media.html">中文</a></li>
-      <li><a href="media_en.html">英文</a></li>
+      <li class="{{$loc=='cn'?'cur':''}}"><a href="/admin/media/cn">中文</a></li>
+      <li class="{{$loc=='en'?'cur':''}}"><a href="/admin/media/en">英文</a></li>
     </ul>
   </div>
   <div class="pic_edit">
-    <div class="ewm_img" id="preview1"></div>
+    <div class="img-cont">
+		@foreach($media as $m)
+			<div>
+				<div>
+					<img src='{{$m->path}}' />
+				</div>
+				<a class='hide delete-btn' data-id="{{$m->id}}" data-url="/admin/media/del">删除</a>
+			</div>
+		@endforeach
+	</div> 
     <div class="uplond">
-       <input type="text" id="uptext1" value="请上传公众号图片：512px宽；大小100k以内"  name="textfield" />  
-       <button type="button">浏览</button>
-       <input type="file" name="fileField" class="file cur1" id="fileField"  onchange="previewImage1(this),document.getElementById('uptext1').value=this.value" />
+		<form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/media/store') }}" enctype="multipart/form-data">
+			{{ csrf_field() }}
+			<input name="loc" value="{{$loc}}" hidden/>
+		   <input type="text" id="upimgs" value="请上传事件图：1280x800px；大小200k以内"  name="textfields" />  
+		   <button type="button">浏览</button>
+		   <input type="file" name="fileFields[]" class="file2"  id="fileFields" onchange="PreviewImage(this)" multiple="multiple"/>
+		   <div class="pop_but"><button type="submit">确定</button></div>
+		</form>
     </div>
-    <div>
-      <input type="text" value="请输入INS链接，http://******" />
-    </div>
-    <div>
-      <input type="text" value="请输入视频链接，http://******" />
-    </div>
-    <div><button type="button">确定</button></div>
+    
   </div>
 </div>
 @endsection

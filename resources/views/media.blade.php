@@ -46,8 +46,10 @@ $(function(){
     </div>
     <div id="to2" class="clearfix">
     <div class="bk_bg"></div>
-    <div class="pheight">
-      <div class="text_fn"><strong id="txt">{{trans('media.comingSoon')}}</strong></div>
+    <div style="height:100%">
+      @foreach($media as $m)
+      <img src="{{$m->path}}" style="width:100%;padding-top:1em">
+	  @endforeach
     </div>
     </div>
     <div id="to3" class="clearfix">
